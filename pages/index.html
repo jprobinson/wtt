@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Where's the L?</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/ltrain.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+    <link href="js/jquery-toggles/css/themes/toggles-dark.css" rel="stylesheet">
+    <link href="js/jquery-toggles/css/toggles.css" rel="stylesheet">
+
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/foundation.min.css" rel="stylesheet">
+    <link href="css/mta-colors.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <meta property="og:title" content="L Train Countdown Clock" /> 
+    <meta property="og:image" content="/images/ltrain.png" /> 
+    <link rel="apple-touch-icon" href="/images/ltrain.png">
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+
+<body>
+
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+
+          <section class="middle tab-bar-section">
+            <h3 class="">the next</h3>
+          </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Please select a line</label></li>
+            <li><a href="#"><span class='mta-bullet mta-1'>1</span></a></li>
+            <li><a href="#"><span class='mta-bullet mta-2'>2</span></a></li>
+            <li><a href="#"><span class='mta-bullet mta-3'>3</span></a></li>
+            <li><a href="#"><span class='mta-bullet mta-4'>4</span></a></li>
+            <li><a href="#"><span class='mta-bullet mta-5'>5</span></a></li>
+            <li><a href="#"><span class='mta-bullet mta-6'>6</span></a></li>
+            <li><a href="#"><span class='mta-bullet mta-l'>L</span></a></li>
+          </ul>
+        </aside>
+
+        <section class="main-section">
+              <!-- content goes here -->
+            <div id="dir" class="toggle-dark toggle on"></div>
+            <h3 style="margin:10px 0">bound <span class="selector mta-bullet mta-l">L</span> train will depart from</h3>
+
+            <select id="stop">
+                <option value="L11">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                Graham Ave</option>
+
+                <option value="L27">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                New Lots Av</option>
+                <option value="L28">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;
+                &nbsp;&nbsp;
+                E 105 St</option>
+                <option value="L29">Canarsie - Rockaway Pkwy</option>
+            </select>
+            <h3 style="margin:2px">in approximately</h3>
+            <h1 class="clocks" id="nextClock"></h1>
+            <h3 style="margin:2px">the following <span class="selector mta-bullet mta-l">L</span> train</h3>
+            <h3 style="margin:2px 0 8px 0">will depart in approximately</h3>
+            <h2 class="clocks" id="followClock"></h2>
+            
+            <div class="locform">
+                <a id="save" class="button radius">remember</a>
+                <h3 id="saved"></h3>
+                <a id="clear" class="">clear</a>
+            </div>
+        </section>
+
+      <a class="exit-off-canvas"></a>
+
+      </div>
+    </div>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="js/vendor/foundation.min.js"></script>
+    <script src="js/foundation/foundation.offcanvas.js"></script>
+    <script src="js/toggles.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(document).foundation({
+              offcanvas : {
+                // Sets method in which offcanvas opens.
+                // [ move | overlap_single | overlap ]
+                open_method: 'overlap', 
+                // Should the menu close when a menu link is clicked?
+                // [ true | false ]
+                close_on_click : true
+         }});
+    </script>
+    <div id="trainselect" style="display:none;">
+        <h6>please select a line</h6>
+           </div>
+</body>
+
+</html>

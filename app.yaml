@@ -1,0 +1,26 @@
+runtime: go
+api_version: go1
+module: default
+
+handlers:
+- url : /
+  static_files: pages/index.html
+  upload: pages/index.html
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /data
+  static_dir: data
+
+- url: /images
+  static_dir: images
+
+- url: /svc/.*
+  script: _go_app
+
+env_variables:
+  MTA_KEY: XXXXXX

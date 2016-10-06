@@ -1,0 +1,87 @@
+body {
+    background-color:black;
+    color:white;
+    text-align:center;
+    height:100%;
+}
+
+h1 {
+    font-size:5em;
+}
+
+.tab-bar {
+    background-color: black;
+}
+
+.tab-bar h3 {
+    font-size:1.6875rem;
+    font-weight:initial;
+}
+
+.clocks {
+    line-height:1em;
+}
+
+.toggle {
+    width:250px;
+    height:45px;
+    font-size:2.5em;
+    margin:auto;
+}
+
+.toggle-on, .toggle-off {
+    font-size:1em!important;
+}
+
+.toggle-dark .toggle-on, .toggle-dark .toggle-select .toggle-inner .active {
+  background: -webkit-gradient(linear, left top, left bottom, from(#242529), to(#34363b))!important;
+  background: -webkit-linear-gradient(top, #242529 0%, #34363b 100%)!important;
+  background: linear-gradient(top, #242529 0%, #34363b 100%)!important;
+}
+
+#nextClock, #followClock {
+    margin:auto;
+}
+
+#followClock {
+    font-size:3em;
+}
+
+select {
+    width:270px;
+    font-size:1.3em;
+    font-family: inherit;
+    color: black;
+    -webkit-appearance: menulist-button;
+}
+
+.locform {
+    padding-top:10px;
+}
+
+#save {
+    font-size:0.9em;
+}
+
+#clear {
+    display:none;
+}
+
+.mta-bullet {
+    font-size: 1.29rem;
+    height:30px;
+    width:30px;
+}
+
+#trainselect {
+    font-size: 24px;
+    width: 100%;
+    background: black;
+    height: 55px;
+    padding-top: 4px;
+    border: 1px solid white;
+}
+
+#trainselect h6 {
+    margin:0;
+}
