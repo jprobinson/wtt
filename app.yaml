@@ -22,5 +22,8 @@ handlers:
 - url: /svc/.*
   script: _go_app
 
+- url : /
+  static_dir: pages
+
 env_variables:
-  MTA_KEY: XXXXXX
+  MTA_KEY: XXXX
