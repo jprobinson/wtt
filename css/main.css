@@ -47,7 +47,7 @@ h1 {
 }
 
 .inner-wrap {
-    height: 100vh;
+    height: 105vh;
 }
 
 select {
@@ -65,7 +65,6 @@ select {
 #save {
     font-size:0.9em;
     padding: 10px 14px;
-    margin-top: 22px;
 }
 
 #clear {

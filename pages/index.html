@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Where's the L?</title>
+    <title>Where's the Train?</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/ltrain.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +11,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
     <link href="js/jquery-toggles/css/themes/toggles-dark.css" rel="stylesheet">
     <link href="js/jquery-toggles/css/toggles.css" rel="stylesheet">
-
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/foundation.min.css" rel="stylesheet">
     <link href="css/mta-colors.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <meta property="og:title" content="L Train Countdown Clock" /> 
-    <meta property="og:image" content="/images/ltrain.png" /> 
+    <meta property="og:title" content="'Where's the Train?' Subway Countdown Clock" />
+    <meta property="og:image" content="/images/ltrain.png" />
     <link rel="apple-touch-icon" href="/images/ltrain.png">
 </head>
 
@@ -66,25 +65,7 @@
               <!-- content goes here -->
             <div id="dir" class="toggle-dark toggle on"></div>
             <h3 style="margin:10px 0">bound <span class="selector mta-bullet mta-l">L</span> train will depart from</h3>
-
             <select id="stop">
-                <option value="L11">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;
-                Graham Ave</option>
-
-                <option value="L27">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;
-                New Lots Av</option>
-                <option value="L28">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;
-                &nbsp;&nbsp;
-                E 105 St</option>
-                <option value="L29">Canarsie - Rockaway Pkwy</option>
             </select>
             <h3 style="margin:2px">in approximately</h3>
             <h1 class="clocks" id="nextClock"></h1>
@@ -93,7 +74,6 @@
             <h2 class="clocks followClock" id="followClock"></h2>
             <h3 style="margin:0; padding: 0">and</h3>
             <h2 class="clocks followClock" id="followClock2"></h2>
-            
             <div class="locform">
                 <a id="save" class="button radius">add to favorites</a>
             </div>
@@ -103,10 +83,9 @@
       </div>
     </div>
 
-
     <script src="js/vendor/modernizr.js"></script>
     <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/foundation.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
     <script src="js/vendor/foundation.offcanvas.js"></script>
     <script src="js/toggles.min.js"></script>
     <script src="js/jquery.countdown.min.js"></script>
@@ -114,11 +93,7 @@
     <script>
         $(document).foundation({
               offcanvas : {
-                // Sets method in which offcanvas opens.
-                // [ move | overlap_single | overlap ]
-                open_method: 'move', 
-                // Should the menu close when a menu link is clicked?
-                // [ true | false ]
+                open_method: 'move',
                 close_on_click : true
          }});
     </script>
