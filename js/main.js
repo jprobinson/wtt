@@ -285,9 +285,9 @@ function createFavLinks() {
     $('.fav-item').click(function(event) {
         event.preventDefault();
         var info = $(this).data("info").split("|");
+        startNorth = info[1] == "north";
         changeLine(info[2]);
         $('#stop').val(info[0]);
-        startNorth = info[1] == "north";
         getTrainTime(updateClock);
     });
 }
