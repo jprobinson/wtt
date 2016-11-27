@@ -19,7 +19,6 @@
     <meta property="og:title" content="L Train Countdown Clock" /> 
     <meta property="og:image" content="/images/ltrain.png" /> 
     <link rel="apple-touch-icon" href="/images/ltrain.png">
-    <script src="js/vendor/modernizr.js"></script>
 </head>
 
 <body>
@@ -34,6 +33,14 @@
           <section class="middle tab-bar-section">
             <h3 class="">the next</h3>
           </section>
+
+          <section class="right-small">
+            <a class="right-off-canvas-toggle" href="#">
+                <span>
+                   <img src="/images/star_24px.svg" alt="saved train stops" />
+                </span>
+            </a>
+          </section>
         </nav>
 
         <aside class="left-off-canvas-menu">
@@ -46,6 +53,12 @@
             <li><a href="#"><span class='mta-bullet mta-5'>5</span></a></li>
             <li><a href="#"><span class='mta-bullet mta-6'>6</span></a></li>
             <li><a href="#"><span class='mta-bullet mta-l'>L</span></a></li>
+          </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+          <ul id="fav-list" class="off-canvas-list">
+            <li id="fav-label"><label>FAVORITES</label></li>
           </ul>
         </aside>
 
@@ -80,23 +93,19 @@
             <h2 class="clocks" id="followClock"></h2>
             
             <div class="locform">
-                <a id="save" class="button radius">remember</a>
-                <h3 id="saved"></h3>
-                <a id="clear" class="">clear</a>
+                <a id="save" class="button radius">add to favorites</a>
             </div>
         </section>
 
       <a class="exit-off-canvas"></a>
-
       </div>
     </div>
 
 
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <script src="js/vendor/foundation.min.js"></script>
-    <script src="js/foundation/foundation.offcanvas.js"></script>
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/vendor/foundation.offcanvas.js"></script>
     <script src="js/toggles.min.js"></script>
     <script src="js/jquery.countdown.min.js"></script>
     <script src="js/main.js"></script>
@@ -105,15 +114,12 @@
               offcanvas : {
                 // Sets method in which offcanvas opens.
                 // [ move | overlap_single | overlap ]
-                open_method: 'overlap', 
+                open_method: 'move', 
                 // Should the menu close when a menu link is clicked?
                 // [ true | false ]
                 close_on_click : true
          }});
     </script>
-    <div id="trainselect" style="display:none;">
-        <h6>please select a line</h6>
-           </div>
 </body>
 
 </html>

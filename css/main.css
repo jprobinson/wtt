@@ -85,3 +85,20 @@ select {
 #trainselect h6 {
     margin:0;
 }
+
+.fav-train {
+    float:left;
+    margin: 15px 5px;
+}
+.fav-delete {
+    margin: 15px 5px;
+    float:right;
+}
+.fav-loc {
+    float:right;
+    width: 65%;
+}
+.fav-clear {
+    clear: both;
+    height: 0;
+}

@@ -39,7 +39,6 @@ function timeoutTrain() {
 
 function updateClock(next, following) {
     if (next == undefined) {
-console.log("UNDEDFIIIINED");
         if (!first) {
             $('.clocks').each(function(){
                 $(this).countdown('stop');
@@ -55,7 +54,7 @@ console.log("UNDEDFIIIINED");
     } else {
         first = false;
         $('.clocks').each(function(){
-            var $this = $(this), id = $(this).attr('id');  
+            var $this = $(this), id = $(this).attr('id');
             var time = following;
             if (id == 'nextClock') {
                 time = next;
@@ -69,7 +68,7 @@ console.log("UNDEDFIIIINED");
 }
 
 // stop|direction|line
-function saveLocation() {
+function addLocation() {
     var stop = $('#stop').val();
 
     var direction = "south";
@@ -78,28 +77,55 @@ function saveLocation() {
         direction = "north";
     }
 
-    var finalLoc = stop+"|"+direction+"|"+currentLine;    
-    localStorage.removeItem("savedstop");
-    localStorage.setItem("savedstop", finalLoc);
+    var finalLoc = stop+"|"+direction+"|"+currentLine;
+
+    var favs = getFavs();
+    favs.push(finalLoc);
+    localStorage.removeItem("savedstops");
+    localStorage.setItem("savedstops", favs.join(","));
     setLocName(stop);
+    createFavLinks();
+}
+
+function getLocName(loc) {
+    return $('#stop option[value="'+loc+'"]').html();
 }
 
 function setLocName(loc) {
-    var locName = $('#stop option[value="'+loc+'"]').html();
+    var locName = getLocName(loc);
     var html = '<span class="sbullet mta-bullet mta-'+currentLine.toLowerCase()+'">'+currentLine;
     html += '</span> '+locName.replace(/\&nbsp;/g,'');
     $('#saved').html(html);
     $('#clear').show();
 }
 
-function getLocation() {
-    return localStorage.getItem("savedstop");
+function getFavs() {
+    var favs = localStorage.getItem("savedstops");
+    if (favs) {
+        favs = favs.split(",");
+    } else {
+        favs = [];
+    }
+    return favs;
 }
 
-function clearLocation() {
+function getLocation() {
+    var old = localStorage.getItem("savedstop");
+    var favs = getFavs();
+    // deal with transition from old=>new
+    if (old != null) {
+        favs.push(old);
+        localStorage.removeItem("savedstop");
+        localStorage.setItem("savedstops", favs.join(","));
+    }
+    return favs[0];
+}
+
+function clearLocation(index) {
+    var favs = getFavs();
+    favs.splice(index, 1);
     localStorage.removeItem("savedstop");
-    $('#saved').html('');
-    $('#clear').hide();
+    localStorage.setItem("savedstops", favs.join(","));
 }
 
 function changeLine(line) {
@@ -126,7 +152,7 @@ function changeStops(line) {
         height:50
     });
 
-    var select = $("select");  
+    var select = $("select");
     select.find("option").remove(); 
     $(lineInfo["stops"]).each(function() {
         var opt = document.createElement("option");
@@ -142,7 +168,6 @@ function changeStops(line) {
 }
 
 function getStops(callback) {
-
     var savedLoc = getLocation();   
     var locData = ["L11","south","L"];
     if (savedLoc) {
@@ -181,6 +206,92 @@ function getStops(callback) {
     });
 }
 
+function getStopName(line, stop) {
+    var lineInfo = stops[line];
+    for (var i = 0; i < lineInfo.stops.length; i++) {
+        if (lineInfo.stops[i][0] == stop) {
+            return lineInfo.stops[i][1].replace(/\&nbsp;/g,''); 
+        }
+    }
+    return "STOP NOT FOUND"; 
+}
+
+function getDirectionName(line, dir) {
+    var lineInfo = stops[line];
+
+    var name = "";
+    if (dir == "south") {
+        name = lineInfo.southbound;
+    } else {
+        name = lineInfo.northbound;
+    }
+    if (name == "BrooklynBrooklyn Brdgnbsp;Brdg") {
+        name = "Brooklyn Brdg";
+    }
+    return name;
+}
+
+function addFavoriteLink(fav, index) {
+    var info = fav.split("|");
+    var list = document.createElement("li");
+    list.className = "fav-item";
+    list.setAttribute("data-info", fav);
+    var base = document.createElement("a");
+    base.href = "#";
+    list.appendChild(base);
+
+    // <span class='mta-bullet mta-l fav-train'>L</span>
+    var train = document.createElement("span");
+    train.className = "mta-bullet mta-"+info[2].toLowerCase()+" fav-train";
+    train.innerHTML = info[2];
+    base.appendChild(train);
+
+    var trash = document.createElement("span");
+    trash.className = "fav-delete";
+    trash.setAttribute("data-fav-index", index);
+    var trashIcon = document.createElement("img");
+    trashIcon.src = "/images/delete_24px.svg";
+    trashIcon.alt = "delete favorite";
+    trash.appendChild(trashIcon);
+    base.appendChild(trash);
+
+    var loc = document.createElement("span");
+    loc.className = "fav-loc";
+    loc.innerHTML = getDirectionName(info[2], info[1]) +
+        '<span style="display:block; font-size:0.2em">BOUND AT</span>'+
+        getStopName(info[2], info[0]);
+    base.appendChild(loc);
+
+    var clear = document.createElement("div");
+    clear.className = "fav-clear";
+    base.appendChild(clear);
+    $("#fav-list").append(list);
+}
+
+
+function createFavLinks() {
+    $(".fav-item").remove();
+    var favs = getFavs();
+    for (var i = 0; i < favs.length; i++) {
+        addFavoriteLink(favs[i], i);
+    }
+    $('.fav-delete').click(function(event) {
+        event.preventDefault();
+        var index = $(this).data('fav-index');
+
+        clearLocation(index);
+        createFavLinks();
+    });
+    $('.fav-item').click(function(event) {
+        event.preventDefault();
+        var info = $(this).data("info").split("|");
+        changeLine(info[2]);
+        $('#stop').val(info[0]);
+        startNorth = info[1] == "north";
+        getTrainTime(updateClock);
+    });
+}
+
 $(function() {
     if (window.navigator.standalone) {
         $("meta[name='apple-mobile-web-app-status-bar-style']").remove();
@@ -194,7 +305,10 @@ $(function() {
             changeLine(newLine);
             getTrainTime(updateClock);
         });
-        
+
+        // populate favorites
+        createFavLinks();
+
         $('.toggle').on('toggle', function(){
             getTrainTime(updateClock);
         });
@@ -204,16 +318,12 @@ $(function() {
         });
         $('#save').click(function(event) {
             event.preventDefault();
-            saveLocation();
+            addLocation();
         });
-        $('#clear').click(function(event) {
-            event.preventDefault();
-            clearLocation();
-        });
-        
+
         getTrainTime(updateClock);
         setTimeout(function() {
-           timeoutTrain(); 
+           timeoutTrain();
         }, 20000);
     });
 });
