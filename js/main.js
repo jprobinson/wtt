@@ -13,20 +13,23 @@ function getTrainTime(callback) {
         function(data) {
             var next;
             var following;
+            var following2;
             var brooklyn = $('.toggle').data('toggles');
             if (brooklyn.active) {
                 if (data.northbound != null) {
                     next = new Date(data.northbound[0]);
                     following = new Date(data.northbound[1]);
+                    following2 = new Date(data.northbound[2]);
                 }
             } else {
                 if (data.southbound != null) {
                     next = new Date(data.southbound[0]);
                     following = new Date(data.southbound[1]);
+                    following2 = new Date(data.southbound[2]);
                 }
             }
 
-            callback(next, following);
+            callback(next, following, following2);
         });
 }
 
@@ -37,7 +40,7 @@ function timeoutTrain() {
     }, 20000);
 }
 
-function updateClock(next, following) {
+function updateClock(next, following, following2) {
     if (next == undefined) {
         if (!first) {
             $('.clocks').each(function(){
@@ -46,11 +49,13 @@ function updateClock(next, following) {
         }
         $('#nextClock').html('N/A');
         $('#followClock').html('N/A');
+        $('#followClock2').html('N/A');
         return;
     }
     if (!first) {
         $('#nextClock').countdown(next);
         $('#followClock').countdown(following);
+        $('#followClock2').countdown(following2);
     } else {
         first = false;
         $('.clocks').each(function(){
@@ -58,6 +63,8 @@ function updateClock(next, following) {
             var time = following;
             if (id == 'nextClock') {
                 time = next;
+            } else if (id == 'followClock2') {
+                time = following2;
             }
             $this.countdown(time, function(event) {
                 var format = '%M:%S';

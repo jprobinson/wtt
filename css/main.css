@@ -2,7 +2,6 @@ body {
     background-color:black;
     color:white;
     text-align:center;
-    height:100%;
 }
 
 h1 {
@@ -39,12 +38,16 @@ h1 {
   background: linear-gradient(top, #242529 0%, #34363b 100%)!important;
 }
 
-#nextClock, #followClock {
+#nextClock, .followClock {
     margin:auto;
 }
 
-#followClock {
+.followClock {
     font-size:3em;
+}
+
+.inner-wrap {
+    height: 100vh;
 }
 
 select {
@@ -61,6 +64,8 @@ select {
 
 #save {
     font-size:0.9em;
+    padding: 10px 14px;
+    margin-top: 22px;
 }
 
 #clear {
