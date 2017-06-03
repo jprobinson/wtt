@@ -5,11 +5,7 @@ var currentLine = "";
 
 function getTrainTime(callback) {
     var stop = $('#stop').val();
-    var feed = "L";
-    if ("L" != currentLine) {
-        feed = "123456S"
-    }
-    $.get('/svc/subway-api/v1/next-trains/'+feed+'/'+stop,
+    $.get('/svc/subway-api/v1/next-trains/'+currentLine+'/'+stop,
         function(data) {
             var next;
             var following;

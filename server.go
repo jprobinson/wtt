@@ -18,7 +18,7 @@ import (
 func init() {
 	key := os.Getenv("MTA_KEY")
 	r := mux.NewRouter()
-	r.HandleFunc("/svc/subway-api/v1/next-trains/{feed}/{stopID}", nextTrains(key)).Methods("GET")
+	r.HandleFunc("/svc/subway-api/v1/next-trains/{line}/{stopID}", nextTrains(key)).Methods("GET")
 	r.HandleFunc("/_ah/warmup",
 		func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusOK) })
 	http.Handle("/", r)
@@ -36,18 +36,22 @@ func nextTrains(key string) http.HandlerFunc {
 
 		vars := mux.Vars(r)
 		stop := vars["stopID"]
-		feedType := vars["feed"]
+		line := strings.ToUpper(vars["line"])
 
 		ctx := appengine.NewContext(r)
-		feed, err := getFeed(ctx, key, (feedType == ltrain))
+		feed, err := getFeed(ctx, key, (line == ltrain))
 		if err != nil {
 			log.Errorf(ctx, "unable to get subway feed: %s", err)
 			http.Error(w, "unable to read subway feed", http.StatusInternalServerError)
 			return
 		}
 
-		north, south := feed.NextTrainTimes(stop)
-		resp := nextTrainResp{north, south}
+		alerts, north, south := feed.NextTrainTimes(stop, line)
+		resp := nextTrainResp{
+			Northbound: north,
+			Southbound: south,
+			Alerts:     alerts,
+		}
 		err = json.NewEncoder(w).Encode(resp)
 		if err != nil {
 			log.Errorf(ctx, "unable to encode response: ", err)
@@ -86,6 +90,7 @@ func getFeed(ctx context.Context, key string, l bool) (*gosubway.FeedMessage, er
 }
 
 type nextTrainResp struct {
-	Northbound []time.Time `json:"northbound"`
-	Southbound []time.Time `json:"southbound"`
+	Northbound []time.Time       `json:"northbound"`
+	Southbound []time.Time       `json:"southbound"`
+	Alerts     []*gosubway.Alert `json:"alerts"`
 }
