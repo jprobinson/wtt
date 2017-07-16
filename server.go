@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"io"
 	"net/http"
 	"os"
 	"strings"
@@ -18,6 +19,14 @@ import (
 func init() {
 	key := os.Getenv("MTA_KEY")
 	r := mux.NewRouter()
+	r.HandleFunc("http://wtt.nyc/.well-known/acme-challenge/ZPU1wVSp4PYGc7EwvgfQ2sDzZzDTLZJU4rn6TeN8WBk",
+		func(w http.ResponseWriter, r *http.Request) {
+			io.WriteString(w, "ZPU1wVSp4PYGc7EwvgfQ2sDzZzDTLZJU4rn6TeN8WBk.sz06j6KUG_9nJGNedr8vGy4DZ6mo_af0MFcEBuWk0Uo")
+		})
+	r.HandleFunc("/.well-known/acme-challenge/SJhmh-8U1pNgTtERQ3I7vCO78sv0n21pd5dVntQJ2K0",
+		func(w http.ResponseWriter, r *http.Request) {
+			io.WriteString(w, "SJhmh-8U1pNgTtERQ3I7vCO78sv0n21pd5dVntQJ2K0.sz06j6KUG_9nJGNedr8vGy4DZ6mo_af0MFcEBuWk0Uo")
+		})
 	r.HandleFunc("/svc/subway-api/v1/next-trains/{line}/{stopID}", nextTrains(key)).Methods("GET")
 	r.HandleFunc("/_ah/warmup",
 		func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusOK) })
