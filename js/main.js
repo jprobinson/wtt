@@ -25,6 +25,14 @@ function getTrainTime(callback) {
                 }
             }
 
+            var hash = '#'+currentLine+'/'+stop+'/'+brooklyn.active
+            if(history.pushState) {
+                history.pushState(null, null, hash);
+            }
+            else {
+                location.hash = hash;
+            }
+
             callback(next, following, following2);
         });
 }
@@ -64,6 +72,9 @@ function updateClock(next, following, following2) {
             }
             $this.countdown(time, function(event) {
                 var format = '%M:%S';
+                if (event == undefined) {
+                    $(this).html('N/A');
+                }
                 $(this).html(event.strftime(format));
             });
         });
@@ -191,7 +202,7 @@ function getStops(callback) {
         }
     };
 
-    var savedStops = JSON.parse(localStorage.getItem("stops"));
+    var savedStops = JSON.parse(localStorage.getItem("stopsv2"));
     if (savedStops) {
        stops = savedStops;
        changeLine(currentLine);
@@ -204,7 +215,7 @@ function getStops(callback) {
         stops = data;
         changeLine(currentLine);
         work();
-        localStorage.setItem("stops", JSON.stringify(stops));
+        localStorage.setItem("stopsv2", JSON.stringify(stops));
         callback();
     });
 }
@@ -299,7 +310,6 @@ $(function() {
     if (window.navigator.standalone) {
         $("meta[name='apple-mobile-web-app-status-bar-style']").remove();
     }
-
     getStops(function(){
         // nav line change
         $('.off-canvas-list li').click(function(event){
@@ -311,6 +321,16 @@ $(function() {
 
         // populate favorites
         createFavLinks();
+
+        if (window.location.hash) {
+            var info = window.location.hash.split('/');
+            if (info.length > 2) {
+                startNorth = info[2] == "true";
+                changeLine(info[0].substr(1));
+                $('#stop').val(info[1]);
+                getTrainTime(updateClock);
+            }
+        }
 
         $('.toggle').on('toggle', function(){
             getTrainTime(updateClock);

@@ -1,5 +1,5 @@
 runtime: go
-api_version: go1
+api_version: go1.8
 module: default
 
 inbound_services:
@@ -36,4 +36,4 @@ handlers:
   static_dir: pages
 
 env_variables:
-  MTA_KEY: XXXX
+  MTA_KEY: XXX

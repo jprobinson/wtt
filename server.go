@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -9,7 +10,6 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"golang.org/x/net/context"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
 
@@ -30,13 +30,11 @@ func init() {
 	r.HandleFunc("/svc/subway-api/v1/next-trains/{line}/{stopID}", nextTrains(key)).Methods("GET")
 	r.HandleFunc("/_ah/warmup",
 		func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusOK) })
-	http.Handle("/", r)
+	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+		req = req.WithContext(appengine.NewContext(req))
+		r.ServeHTTP(w, req)
+	})
 }
-
-const (
-	ltrain = "L"
-	other  = "123456S"
-)
 
 func nextTrains(key string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -47,8 +45,24 @@ func nextTrains(key string) http.HandlerFunc {
 		stop := vars["stopID"]
 		line := strings.ToUpper(vars["line"])
 
-		ctx := appengine.NewContext(r)
-		feed, err := getFeed(ctx, key, (line == ltrain))
+		var ft gosubway.FeedType
+		switch line {
+		case "1", "2", "3", "4", "5", "6":
+			ft = gosubway.NumberedFeed
+		case "N", "Q", "R", "W":
+			ft = gosubway.YellowFeed
+		case "B", "D":
+			ft = gosubway.OrangeFeed
+		case "C":
+			ft = gosubway.BlueFeed
+		case "L":
+			ft = gosubway.LFeed
+		default:
+			http.Error(w, "invalid line", http.StatusBadRequest)
+			return
+		}
+		ctx := r.Context()
+		feed, err := getFeed(ctx, key, ft)
 		if err != nil {
 			log.Errorf(ctx, "unable to get subway feed: %s", err)
 			http.Error(w, "unable to read subway feed", http.StatusInternalServerError)
@@ -75,7 +89,7 @@ const (
 )
 
 // retries until it hits max attempts or a context timeout
-func getFeed(ctx context.Context, key string, l bool) (*gosubway.FeedMessage, error) {
+func getFeed(ctx context.Context, key string, ft gosubway.FeedType) (*gosubway.FeedMessage, error) {
 	var (
 		feed *gosubway.FeedMessage
 		err  error
@@ -88,7 +102,7 @@ func getFeed(ctx context.Context, key string, l bool) (*gosubway.FeedMessage, er
 		// retry backoff
 		time.Sleep(time.Duration((attempt - 1)) * backoffStep)
 		// attempt to get feed
-		feed, err = gosubway.GetFeed(ctx, key, l)
+		feed, err = gosubway.GetFeed(ctx, key, ft)
 		if err == nil ||
 			(err != nil && strings.Contains(err.Error(), "deadline exceeded")) {
 			break
