@@ -13,15 +13,27 @@ function getTrainTime(callback) {
             var brooklyn = $('.toggle').data('toggles');
             if (brooklyn.active) {
                 if (data.northbound != null) {
-                    next = new Date(data.northbound[0]);
-                    following = new Date(data.northbound[1]);
-                    following2 = new Date(data.northbound[2]);
+                    if (data.northbound.length > 0) {
+                        next = new Date(data.northbound[0]);
+                    }
+                    if (data.northbound.length > 1) {
+                        following = new Date(data.northbound[1]);
+                    }
+                    if (data.northbound.length > 2) {
+                        following2 = new Date(data.northbound[2]);
+                    }
                 }
             } else {
                 if (data.southbound != null) {
-                    next = new Date(data.southbound[0]);
-                    following = new Date(data.southbound[1]);
-                    following2 = new Date(data.southbound[2]);
+                    if (data.southbound.length > 0) {
+                        next = new Date(data.southbound[0]);
+                    }
+                    if (data.southbound.length > 1) {
+                        following = new Date(data.southbound[1]);
+                    }
+                    if (data.southbound.length > 2) {
+                        following2 = new Date(data.southbound[2]);
+                    }
                 }
             }
 
@@ -58,8 +70,17 @@ function updateClock(next, following, following2) {
     }
     if (!first) {
         $('#nextClock').countdown(next);
-        $('#followClock').countdown(following);
-        $('#followClock2').countdown(following2);
+        if (following) {
+            $('#followClock').countdown(following);
+        } else {
+            $('#followClock').html('N/A');
+        }
+        if (following2) {
+            $('#followClock2').countdown(following2);
+        } else {
+            $('#followClock2').html('N/A');
+        }
+
     } else {
         first = false;
         $('.clocks').each(function(){
