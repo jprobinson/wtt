@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"google.golang.org/appengine/log"
@@ -25,7 +26,7 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 	log.Debugf(ctx, "request: %#v", r)
 	switch r.Result.Action {
 	case "next_train_request":
-		line := r.Result.Parameters["subway-line"].(string)
+		line := strings.ToUpper(r.Result.Parameters["subway-line"].(string))
 		stop := r.Result.Parameters["subway-stop"].(string)
 		dir := r.Result.Parameters["subway-direction"].(string)
 
