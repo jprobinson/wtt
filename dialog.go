@@ -45,7 +45,8 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 		ft, err := parseFeed(mys.Line)
 		if err != nil {
 			log.Debugf(ctx, "unable to parse line: %s", mys.Line)
-			return nil, err
+			res = fmt.Sprintf("sorry, the %s line is not available yet", mys.Line)
+			break
 		}
 		res = s.getNextTrainDialog(ctx, ft, mys.Line, mys.Stop, mys.Dir)
 	case "save_my_stop_request":
@@ -73,7 +74,8 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 		ft, err := parseFeed(line)
 		if err != nil {
 			log.Debugf(ctx, "unable to parse line: %s", line)
-			return nil, err
+			res = fmt.Sprintf("sorry, the %s line is not available yet", line)
+			break
 		}
 
 		res = s.getNextTrainDialog(ctx, ft, line, stop, dir)

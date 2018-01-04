@@ -52,7 +52,7 @@ func parseFeed(line string) (gosubway.FeedType, error) {
 		ft = gosubway.NumberedFeed
 	case "N", "Q", "R", "W":
 		ft = gosubway.YellowFeed
-	case "B", "D":
+	case "B", "D", "F", "M":
 		ft = gosubway.OrangeFeed
 	case "A", "C", "E":
 		ft = gosubway.BlueFeed
