@@ -63,7 +63,7 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 				"error": "unable to complete request: " + err.Error(),
 			}, http.StatusInternalServerError)
 		}
-		res = "successfully save your stop, " + stop
+		res = "successfully saved your stop, " + stop
 	case "next_train_request":
 		line := strings.ToUpper(r.Result.Parameters["subway-line"].(string))
 		stop := r.Result.Parameters["subway-stop"].(string)
@@ -89,7 +89,7 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 
 	log.Debugf(ctx, "responding with: %s", res)
 	return &dialogflow.FulfillmentResponse{
-		Speech:      res,
+		Speech:      res + " Would you like to hear about another stop?",
 		DisplayText: res,
 		Source:      "Where's The Train (NYC)",
 	}, nil
@@ -119,7 +119,7 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 
 	feed, err := getFeed(ctx, s.key, ft)
 	if err != nil {
-		return fmt.Sprintf("Sorry, I'm having problems getting the subway feed. Please try again later.")
+		return fmt.Sprintf("Sorry, I'm having problems getting the subway feed.")
 	}
 
 	stopLine, ok := stopNameToID[stop]
@@ -129,7 +129,7 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 
 	stopID, ok := stopLine[line]
 	if !ok {
-		return fmt.Sprintf("Sorry, I didn't recognise \"%s\" as a part of the %s line",
+		return fmt.Sprintf("Sorry, I didn't recognise \"%s\" as a part of the %s line.",
 			stop, line)
 	}
 
@@ -143,7 +143,7 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 	}
 
 	if len(trains) == 0 {
-		return fmt.Sprintf("Sorry, there are no train times available for %s bound %s trains at %s",
+		return fmt.Sprintf("Sorry, there are no train times available for %s bound %s trains at %s.",
 			dir, line, stop)
 	}
 
@@ -155,7 +155,7 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 	if mins != "0" {
 		out += mins + " minutes and "
 	}
-	out += secs + " seconds"
+	out += secs + " seconds."
 	return out
 }
 
