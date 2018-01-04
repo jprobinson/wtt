@@ -49,6 +49,30 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 			break
 		}
 		res = s.getNextTrainDialog(ctx, ft, mys.Line, mys.Stop, mys.Dir)
+	case "my_following_train_request":
+		uid := r.OriginalRequest.Data.User.UserID
+		if uid == "" {
+			res = "sorry, you need to be logged in for that to work"
+			break
+		}
+		mys, serr := getMyStop(ctx, uid)
+		if serr == datastore.ErrNoSuchEntity {
+			res = "you haven't saved your personalized subway stop yet. Say \"save my stop\" to create or update your stop"
+			break
+		}
+		if serr != nil {
+			err = serr
+			res = "sorry, we were unable to look up your stop."
+			break
+		}
+		ft, err := parseFeed(mys.Line)
+		if err != nil {
+			log.Debugf(ctx, "unable to parse line: %s", mys.Line)
+			res = fmt.Sprintf("sorry, the %s line is not available yet", mys.Line)
+			break
+		}
+		res = s.getFollowingTrainDialog(ctx, ft, mys.Line, mys.Stop, mys.Dir)
+
 	case "save_my_stop_request":
 		uid := r.OriginalRequest.Data.User.UserID
 		if uid == "" {
@@ -79,6 +103,17 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 		}
 
 		res = s.getNextTrainDialog(ctx, ft, line, stop, dir)
+	case "following_train_request":
+		line := strings.ToUpper(r.Result.Parameters["subway-line"].(string))
+		stop := r.Result.Parameters["subway-stop"].(string)
+		dir := r.Result.Parameters["subway-direction"].(string)
+		ft, err := parseFeed(line)
+		if err != nil {
+			log.Debugf(ctx, "unable to parse line: %s", line)
+			res = fmt.Sprintf("sorry, the %s line is not available yet", line)
+			break
+		}
+		res = s.getFollowingTrainDialog(ctx, ft, line, stop, dir)
 	default:
 		log.Debugf(ctx, "unkown action %s", r.Result.Action)
 		return nil, errBadRequest
@@ -122,7 +157,14 @@ func decodeDialogflow(ctx context.Context, r *http.Request) (interface{}, error)
 }
 
 func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, line, stop, dir string) string {
+	return s.getTrainDialog(ctx, ft, "next", line, stop, dir, 0)
+}
 
+func (s *service) getFollowingTrainDialog(ctx context.Context, ft gosubway.FeedType, line, stop, dir string) string {
+	return s.getTrainDialog(ctx, ft, "following", line, stop, dir, 1)
+}
+
+func (s *service) getTrainDialog(ctx context.Context, ft gosubway.FeedType, name, line, stop, dir string, indx int) string {
 	feed, err := getFeed(ctx, s.key, ft)
 	if err != nil {
 		return fmt.Sprintf("Sorry, I'm having problems getting the subway feed.")
@@ -148,16 +190,16 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 		trains = south
 	}
 
-	if len(trains) == 0 {
-		return fmt.Sprintf("Sorry, there are no train times available for %s bound %s trains at %s.",
-			dir, line, stop)
+	if len(trains) < indx+1 {
+		return fmt.Sprintf("Sorry, the %s train time is not available for %s bound %s trains at %s.",
+			name, dir, line, stop)
 	}
 
-	diff := trains[0].Sub(time.Now().UTC())
+	diff := trains[indx].Sub(time.Now().UTC())
 	mins := strconv.Itoa(int(diff.Minutes()))
 	secs := strconv.Itoa(int(diff.Seconds()) % 60)
-	out := fmt.Sprintf("The next %s train will leave %s towards %s in ",
-		line, stop, dir)
+	out := fmt.Sprintf("The %s %s train will leave %s towards %s in ",
+		name, line, stop, dir)
 	if mins != "0" {
 		out += mins + " minutes and "
 	}
