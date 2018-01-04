@@ -27,7 +27,7 @@ var trainDirs = map[string]map[string]string{
 	"Z":  {"northbound": "Queens", "southbound": "Manhattan"},
 }
 
-// stop name -> train line -> stop ID
+// stop name> train line> stop ID
 var stopNameToID = map[string]map[string]string{
 	"Fresh Pond Rd": {
 		"M": "M04",
@@ -58,7 +58,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "613",
 		"6":  "613",
 	},
-	"Clinton - Washington Avs": {
+	"Clinton Washington Avs": {
 		"C": "A44",
 		"G": "G35",
 	},
@@ -78,7 +78,7 @@ var stopNameToID = map[string]map[string]string{
 		"2": "128",
 		"5": "128",
 	},
-	"Bedford Park Blvd - Lehman College": {
+	"Bedford Park Blvd Lehman College": {
 		"4": "405",
 	},
 	"Saint Lawrence Avenue": {
@@ -120,7 +120,7 @@ var stopNameToID = map[string]map[string]string{
 		"J": "J29",
 		"L": "L19",
 	},
-	"Briarwood - Van Wyck Blvd": {
+	"Briarwood Van Wyck Blvd": {
 		"E": "F05",
 		"F": "F05",
 	},
@@ -154,7 +154,7 @@ var stopNameToID = map[string]map[string]string{
 		"C": "A27",
 		"E": "A27",
 	},
-	"Atlantic Av - Barclays Ctr": {
+	"Atlantic Av Barclays Ctr": {
 		"B": "D24",
 		"D": "R31",
 		"N": "R31",
@@ -193,11 +193,11 @@ var stopNameToID = map[string]map[string]string{
 		"B":  "A18",
 		"6":  "624",
 	},
-	"63 Dr - Rego Park": {
+	"63 Dr Rego Park": {
 		"R": "G10",
 		"E": "G10",
 	},
-	"Jamaica - 179th Street": {
+	"Jamaica 179th Street": {
 		"F": "F01",
 	},
 	"Nassau Avenue": {
@@ -333,7 +333,7 @@ var stopNameToID = map[string]map[string]string{
 		"1": "114",
 		"3": "302",
 	},
-	"Westchester Square - East Tremont Avenue": {
+	"Westchester Square East Tremont Avenue": {
 		"6X": "604",
 		"6":  "604",
 	},
@@ -372,7 +372,7 @@ var stopNameToID = map[string]map[string]string{
 	"138th Street Grand Concourse": {
 		"4": "416",
 	},
-	"Bedford - Nostrand Avs": {
+	"Bedford Nostrand Avs": {
 		"G": "G33",
 	},
 	"Whitehall Street": {
@@ -388,7 +388,7 @@ var stopNameToID = map[string]map[string]string{
 		"W": "R11",
 		"N": "R11",
 	},
-	"Astoria - Ditmars Blvd": {
+	"Astoria Ditmars Blvd": {
 		"W": "R01",
 		"N": "R01",
 	},
@@ -407,7 +407,7 @@ var stopNameToID = map[string]map[string]string{
 		"2": "217",
 		"5": "217",
 	},
-	"Wakefield - 241st Street": {
+	"Wakefield 241st Street": {
 		"2": "201",
 	},
 	"Hoyt Street": {
@@ -461,7 +461,7 @@ var stopNameToID = map[string]map[string]string{
 	"62nd Street": {
 		"D": "B16",
 	},
-	"Myrtle - Willoughby Avs": {
+	"Myrtle Willoughby Avs": {
 		"G": "G32",
 	},
 	"Sutter Avenue": {
@@ -489,7 +489,7 @@ var stopNameToID = map[string]map[string]string{
 		"2": "123",
 		"5": "123",
 	},
-	"Harlem - 148th Street": {
+	"Harlem 148th Street": {
 		"3": "301",
 	},
 	"Van Siclen Avenue": {
@@ -511,7 +511,7 @@ var stopNameToID = map[string]map[string]string{
 		"R": "G09",
 		"E": "G09",
 	},
-	"Inwood - 207th Street": {
+	"Inwood 207th Street": {
 		"A": "A02",
 	},
 	"Beverley Rd": {
@@ -569,7 +569,7 @@ var stopNameToID = map[string]map[string]string{
 	"York Street": {
 		"F": "F18",
 	},
-	"Myrtle - Wyckoff Avs": {
+	"Myrtle Wyckoff Avs": {
 		"M": "M08",
 		"L": "L17",
 	},
@@ -624,17 +624,17 @@ var stopNameToID = map[string]map[string]string{
 	"Winthrop Street": {
 		"2": "243",
 	},
-	"Bushwick Av - Aberdeen Street": {
+	"Bushwick Av Aberdeen Street": {
 		"L": "L21",
 	},
 	"9th Avenue": {
 		"D": "B12",
 	},
-	"Smith - 9th Streets": {
+	"Smith 9th Streets": {
 		"G": "F22",
 		"F": "F22",
 	},
-	"Times Square - 42nd Street": {
+	"Times Square 42nd Street": {
 		"Q": "R16",
 		"N": "R16",
 		"1": "127",
@@ -649,7 +649,7 @@ var stopNameToID = map[string]map[string]string{
 		"G": "G30",
 		"N": "R05",
 	},
-	"Flatbush Av - Brooklyn College": {
+	"Flatbush Av Brooklyn College": {
 		"2": "247",
 	},
 	"Nostrand Avenue": {
@@ -676,7 +676,7 @@ var stopNameToID = map[string]map[string]string{
 		"W": "R06",
 		"N": "R06",
 	},
-	"Grand Av - Newtown": {
+	"Grand Av Newtown": {
 		"R": "G12",
 		"E": "G12",
 	},
@@ -693,12 +693,12 @@ var stopNameToID = map[string]map[string]string{
 		"D": "D15",
 		"F": "D15",
 	},
-	"47th-50th Streets - Rockefeller Center": {
+	"47th-50th Streets Rockefeller Center": {
 		"B": "D15",
 		"D": "D15",
 		"F": "D15",
 	},
-	"Van Cortlandt Park - 242nd Street": {
+	"Van Cortlandt Park 242nd Street": {
 		"1": "101",
 	},
 	"42nd Street Bryant Park": {
@@ -717,7 +717,7 @@ var stopNameToID = map[string]map[string]string{
 		"G": "F23",
 		"F": "F23",
 	},
-	"3 Av - 149th Street": {
+	"3 Av 149th Street": {
 		"2": "221",
 		"5": "221",
 	},
@@ -746,7 +746,7 @@ var stopNameToID = map[string]map[string]string{
 	"Bedford Avenue": {
 		"L": "L08",
 	},
-	"Sutter Av - Rutland Rd": {
+	"Sutter Av Rutland Rd": {
 		"3": "251",
 		"4": "251",
 	},
@@ -776,12 +776,12 @@ var stopNameToID = map[string]map[string]string{
 	"21 Street Queensbridge": {
 		"F": "B04",
 	},
-	"Brooklyn Bridge - City Hall": {
+	"Brooklyn Bridge City Hall": {
 		"6X": "640",
 		"4":  "640",
 		"6":  "640",
 	},
-	"3 Av - 138th Street": {
+	"3 Av 138th Street": {
 		"6X": "619",
 		"6":  "619",
 	},
@@ -857,7 +857,7 @@ var stopNameToID = map[string]map[string]string{
 		"R": "G21",
 		"E": "G21",
 	},
-	"Bay Ridge - 95th Street": {
+	"Bay Ridge 95th Street": {
 		"R": "R45",
 	},
 	"215th Street": {
@@ -945,7 +945,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "636",
 		"6":  "636",
 	},
-	"Middle Village - Metropolitan Avenue": {
+	"Middle Village Metropolitan Avenue": {
 		"M": "M01",
 	},
 	"Neck Rd": {
@@ -966,7 +966,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "637",
 		"6":  "637",
 	},
-	"Crown Heights - Utica Avenue": {
+	"Crown Heights Utica Avenue": {
 		"3": "250",
 		"4": "250",
 	},
@@ -983,7 +983,7 @@ var stopNameToID = map[string]map[string]string{
 		"5": "139",
 		"W": "R26",
 	},
-	"Jamaica Center - Parsons/Archer": {
+	"Jamaica Center Parsons/Archer": {
 		"Z": "G05",
 		"J": "G05",
 		"E": "G05",
@@ -1008,7 +1008,7 @@ var stopNameToID = map[string]map[string]string{
 	"Bowling Green": {
 		"4": "420",
 	},
-	"Jamaica - Van Wyck": {
+	"Jamaica Van Wyck": {
 		"E": "G07",
 	},
 	"DeKalb Avenue": {
@@ -1028,7 +1028,7 @@ var stopNameToID = map[string]map[string]string{
 		"G": "F26",
 		"F": "F26",
 	},
-	"Grand Central - 42nd Street": {
+	"Grand Central 42nd Street": {
 		"6X": "631",
 		"4":  "631",
 		"6":  "631",
@@ -1040,13 +1040,13 @@ var stopNameToID = map[string]map[string]string{
 	"Bay 50th Street": {
 		"D": "B23",
 	},
-	"Canarsie - Rockaway Parkway": {
+	"Canarsie Rockaway Parkway": {
 		"L": "L29",
 	},
-	"Norwood - 205th Street": {
+	"Norwood 205th Street": {
 		"D": "D01",
 	},
-	"Hoyt - Schermerhorn Streets": {
+	"Hoyt Schermerhorn Streets": {
 		"A": "A42",
 		"C": "A42",
 		"G": "A42",
@@ -1101,7 +1101,7 @@ var stopNameToID = map[string]map[string]string{
 		"1": "111",
 		"A": "A06",
 	},
-	"Eastchester - Dyre Avenue": {
+	"Eastchester Dyre Avenue": {
 		"5": "501",
 	},
 	"Gates Avenue": {
@@ -1128,7 +1128,7 @@ var stopNameToID = map[string]map[string]string{
 	"Jefferson Street": {
 		"L": "L15",
 	},
-	"Coney Island - Stillwell Avenue": {
+	"Coney Island Stillwell Avenue": {
 		"Q": "D43",
 		"N": "D43",
 		"D": "D43",
@@ -1207,7 +1207,7 @@ var stopNameToID = map[string]map[string]string{
 		"3": "255",
 		"4": "255",
 	},
-	"Eastern Parkway - Brooklyn Museum": {
+	"Eastern Parkway Brooklyn Museum": {
 		"3": "238",
 		"2": "238",
 		"4": "238",
@@ -1219,7 +1219,7 @@ var stopNameToID = map[string]map[string]string{
 	"Avenue X": {
 		"F": "F38",
 	},
-	"West Farms Square - East Tremont Avenue": {
+	"West Farms Square East Tremont Avenue": {
 		"2": "214",
 		"5": "214",
 	},
@@ -1233,7 +1233,7 @@ var stopNameToID = map[string]map[string]string{
 		"4": "418",
 		"Z": "M22",
 	},
-	"Sutphin Blvd - Archer Av - JFK Airport": {
+	"Sutphin Blvd Archer Av JFK Airport": {
 		"Z": "G06",
 		"J": "G06",
 		"E": "G06",
@@ -1248,7 +1248,7 @@ var stopNameToID = map[string]map[string]string{
 	"Morgan Avenue": {
 		"L": "L14",
 	},
-	"Ozone Park - Lefferts Blvd": {
+	"Ozone Park Lefferts Blvd": {
 		"A": "A65",
 	},
 	"Rockaway Avenue": {
@@ -1266,7 +1266,7 @@ var stopNameToID = map[string]map[string]string{
 	"Atlantic Avenue": {
 		"L": "L24",
 	},
-	"Jackson Heights - Roosevelt Avenue": {
+	"Jackson Heights Roosevelt Avenue": {
 		"R": "G14",
 		"E": "G14",
 		"F": "G14",
@@ -1317,7 +1317,7 @@ var stopNameToID = map[string]map[string]string{
 	"Cleveland Street": {
 		"J": "J22",
 	},
-	"Kingston - Throop Avs": {
+	"Kingston Throop Avs": {
 		"C": "A47",
 	},
 	"Chambers Street": {
@@ -1375,7 +1375,7 @@ var stopNameToID = map[string]map[string]string{
 		"Z": "J20",
 		"J": "J20",
 	},
-	"Forest Hills - 71st Avenue": {
+	"Forest Hills 71st Avenue": {
 		"R": "G08",
 		"E": "G08",
 		"F": "G08",
@@ -1390,7 +1390,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "630",
 		"6":  "630",
 	},
-	"Marble Hill - 225th Street": {
+	"Marble Hill 225th Street": {
 		"1": "106",
 	},
 	"Neptune Avenue": {
@@ -1404,7 +1404,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "632",
 		"6":  "632",
 	},
-	"Kew Gardens - Union Tpke": {
+	"Kew Gardens Union Tpke": {
 		"E": "F06",
 		"F": "F06",
 	},
