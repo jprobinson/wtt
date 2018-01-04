@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
 
 	"github.com/NYTimes/marvin"
@@ -23,8 +24,46 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 		res string
 		err error
 	)
-	log.Debugf(ctx, "request: %#v", r)
 	switch r.Result.Action {
+	case "my_next_train_request":
+		uid := r.OriginalRequest.Data.User.UserID
+		if uid == "" {
+			res = "sorry, you need to be logged in for that to work"
+			break
+		}
+		mys, serr := getMyStop(ctx, uid)
+		if serr == datastore.ErrNoSuchEntity {
+			res = "you haven't saved your personalized subway stop yet. Say \"save my stop\" to create or update your stop"
+			break
+		}
+		if serr != nil {
+			err = serr
+			res = "sorry, we were unable to look up your stop."
+			break
+		}
+		ft, err := parseFeed(mys.Line)
+		if err != nil {
+			log.Debugf(ctx, "unable to parse line: %s", mys.Line)
+			return nil, err
+		}
+		res = s.getNextTrainDialog(ctx, ft, mys.Line, mys.Stop, mys.Dir)
+	case "save_my_stop_request":
+		uid := r.OriginalRequest.Data.User.UserID
+		if uid == "" {
+			res = "sorry, you need to be logged in for that to work"
+			break
+		}
+		line := strings.ToUpper(r.Result.Parameters["subway-line"].(string))
+		stop := r.Result.Parameters["subway-stop"].(string)
+		dir := r.Result.Parameters["subway-direction"].(string)
+
+		err = saveMyStop(ctx, uid, line, stop, dir)
+		if err != nil {
+			return nil, marvin.NewJSONStatusResponse(map[string]string{
+				"error": "unable to complete request: " + err.Error(),
+			}, http.StatusInternalServerError)
+		}
+		res = "successfully save your stop, " + stop
 	case "next_train_request":
 		line := strings.ToUpper(r.Result.Parameters["subway-line"].(string))
 		stop := r.Result.Parameters["subway-stop"].(string)
@@ -43,7 +82,7 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 	}
 
 	if err != nil {
-		marvin.NewJSONStatusResponse(map[string]string{
+		return nil, marvin.NewJSONStatusResponse(map[string]string{
 			"error": "unable to complete request: " + err.Error(),
 		}, http.StatusInternalServerError)
 	}
@@ -66,6 +105,7 @@ func decodeDialogflow(ctx context.Context, r *http.Request) (interface{}, error)
 		log.Debugf(ctx, "unable to read request: %s", err)
 		return nil, errBadRequest
 	}
+	log.Debugf(ctx, "bod: %s", string(bod))
 	err = json.Unmarshal(bod, &req)
 	if err != nil {
 		log.Debugf(ctx, "unable to decode request: %s - %s", err, string(bod))
@@ -79,7 +119,7 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 
 	feed, err := getFeed(ctx, s.key, ft)
 	if err != nil {
-		return fmt.Sprintf("Sorry, I'm having problems getting the subway feed. Please try again later. \"%s\"", stop)
+		return fmt.Sprintf("Sorry, I'm having problems getting the subway feed. Please try again later.")
 	}
 
 	stopLine, ok := stopNameToID[stop]
@@ -110,10 +150,32 @@ func (s *service) getNextTrainDialog(ctx context.Context, ft gosubway.FeedType, 
 	diff := trains[0].Sub(time.Now().UTC())
 	mins := strconv.Itoa(int(diff.Minutes()))
 	secs := strconv.Itoa(int(diff.Seconds()) % 60)
-	out := "The next train will leave in "
+	out := fmt.Sprintf("The next %s train will leave %s towards %s in ",
+		line, stop, dir)
 	if mins != "0" {
 		out += mins + " minutes and "
 	}
 	out += secs + " seconds"
 	return out
+}
+
+type myStop struct {
+	Line string
+	Stop string
+	Dir  string
+}
+
+func getMyStop(ctx context.Context, userID string) (*myStop, error) {
+	var my myStop
+	err := datastore.Get(ctx, datastore.NewKey(ctx, "MyStop", userID, 0, nil), &my)
+	return &my, err
+}
+
+func saveMyStop(ctx context.Context, userID, line, stop, dir string) error {
+	_, err := datastore.Put(ctx, datastore.NewKey(ctx, "MyStop", userID, 0, nil), &myStop{
+		Line: line,
+		Stop: stop,
+		Dir:  dir,
+	})
+	return err
 }
