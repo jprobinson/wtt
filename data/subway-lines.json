@@ -112,5 +112,23 @@
         "synonyms": [
             "G"
         ]
+    },
+   {
+        "value": "7",
+        "synonyms": [
+            "7"
+        ]
+    },
+   {
+        "value": "Z",
+        "synonyms": [
+            "Z"
+        ]
+    },
+    {
+        "value": "J",
+        "synonyms": [
+            "J"
+        ]
     }
 ]

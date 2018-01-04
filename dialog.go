@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"strings"
@@ -87,9 +88,12 @@ func (s *service) postDialogflow(ctx context.Context, req interface{}) (interfac
 		}, http.StatusInternalServerError)
 	}
 
+	// random goodbye
+	ending := goodbyes[rand.New(rand.NewSource(time.Now().Unix())).Intn(len(goodbyes)-1)]
+
 	log.Debugf(ctx, "responding with: %s", res)
 	return &dialogflow.FulfillmentResponse{
-		Speech:      res + " Would you like to hear about another stop?",
+		Speech:      res + " " + ending,
 		DisplayText: res,
 		Source:      "Where's The Train (NYC)",
 	}, nil
@@ -178,4 +182,17 @@ func saveMyStop(ctx context.Context, userID, line, stop, dir string) error {
 		Dir:  dir,
 	})
 	return err
+}
+
+var goodbyes = []string{
+	"Ok, bye!",
+	"Bye bye now",
+	"Peace out!",
+	"Goodbye",
+	"Hope you can catch the train!",
+	"Hope you can make it!",
+	"Adios!",
+	"Au revoir",
+	"Have a good trip!",
+	"Have a good ride!",
 }
