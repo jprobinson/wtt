@@ -18,6 +18,8 @@ handlers:
 
 - url: /data
   static_dir: data
+  http_headers:
+    Content-Type: application/json
 
 - url: /images
   static_dir: images
