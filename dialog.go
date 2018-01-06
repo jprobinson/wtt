@@ -198,7 +198,15 @@ func (s *service) getTrainDialog(ctx context.Context, ft gosubway.FeedType, name
 			name, dir, line, stop)
 	}
 
-	diff := trains[indx].Sub(time.Now().UTC())
+	out := timeSpeak(trains[indx], name, line, stop, dir)
+	if len(trains) >= indx+2 {
+		out += timeSpeak(trains[indx+1], "following", line, stop, dir)
+	}
+	return out
+}
+
+func timeSpeak(t time.Time, name, line, stop, dir string) string {
+	diff := t.Sub(time.Now().UTC())
 	mins := strconv.Itoa(int(diff.Minutes()))
 	secs := strconv.Itoa(int(diff.Seconds()) % 60)
 	out := fmt.Sprintf("The %s %s train will leave %s towards %s in ",
