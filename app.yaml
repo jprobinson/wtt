@@ -36,6 +36,3 @@ handlers:
 
 - url : /
   static_dir: pages
-
-env_variables:
-  MTA_KEY: XXX

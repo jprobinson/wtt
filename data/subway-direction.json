@@ -34,5 +34,29 @@
         "synonyms": [
             "Queens"
         ]
+    },
+    {
+        "value": "uptown",
+        "synonyms": [
+            "uptown"
+        ]
+    },
+    {
+        "value": "downtown",
+        "synonyms": [
+            "downtown"
+        ]
+    },
+    {
+        "value": "Southbound",
+        "synonyms": [
+            "Soutbound"
+        ]
+    },
+    {
+        "value": "Northbound",
+        "synonyms": [
+            "Northbound"
+        ]
     }
 ]

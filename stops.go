@@ -29,7 +29,7 @@ var trainDirs = map[string]map[string]string{
 
 // stop name> train line> stop ID
 var stopNameToID = map[string]map[string]string{
-	"Fresh Pond Rd": {
+	"Fresh Pond Road": {
 		"M": "M04",
 	},
 	"Central Park North ,110th Street": {
@@ -58,7 +58,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "613",
 		"6":  "613",
 	},
-	"Clinton Washington Avs": {
+	"Clinton Washington Avenues": {
 		"C": "A44",
 		"G": "G35",
 	},
@@ -294,7 +294,7 @@ var stopNameToID = map[string]map[string]string{
 		"4":  "629",
 		"6":  "629",
 	},
-	"Cortelyou Rd": {
+	"Cortelyou Road": {
 		"Q": "D30",
 	},
 	"Metropolitan Avenue": {
@@ -356,7 +356,7 @@ var stopNameToID = map[string]map[string]string{
 		"2": "215",
 		"5": "215",
 	},
-	"Fordham Rd": {
+	"Fordham Road": {
 		"4": "407",
 		"D": "D05",
 	},
@@ -372,7 +372,7 @@ var stopNameToID = map[string]map[string]string{
 	"138th Street Grand Concourse": {
 		"4": "416",
 	},
-	"Bedford Nostrand Avs": {
+	"Bedford Nostrand Avenues": {
 		"G": "G33",
 	},
 	"Whitehall Street": {
@@ -461,7 +461,7 @@ var stopNameToID = map[string]map[string]string{
 	"62nd Street": {
 		"D": "B16",
 	},
-	"Myrtle Willoughby Avs": {
+	"Myrtle Willoughby Avenues": {
 		"G": "G32",
 	},
 	"Sutter Avenue": {
@@ -514,7 +514,7 @@ var stopNameToID = map[string]map[string]string{
 	"Inwood 207th Street": {
 		"A": "A02",
 	},
-	"Beverley Rd": {
+	"Beverley Road": {
 		"Q": "D29",
 	},
 	"Liberty Avenue": {
@@ -559,7 +559,7 @@ var stopNameToID = map[string]map[string]string{
 	"Sutphin Blvd": {
 		"F": "F04",
 	},
-	"Gun Hill Rd": {
+	"Gun Hill Road": {
 		"2": "208",
 		"5": "503",
 	},
@@ -569,7 +569,7 @@ var stopNameToID = map[string]map[string]string{
 	"York Street": {
 		"F": "F18",
 	},
-	"Myrtle Wyckoff Avs": {
+	"Myrtle Wyckoff Avenues": {
 		"M": "M08",
 		"L": "L17",
 	},
@@ -746,7 +746,7 @@ var stopNameToID = map[string]map[string]string{
 	"Bedford Avenue": {
 		"L": "L08",
 	},
-	"Sutter Av Rutland Rd": {
+	"Sutter Av Rutland Road": {
 		"3": "251",
 		"4": "251",
 	},
@@ -757,7 +757,7 @@ var stopNameToID = map[string]map[string]string{
 	"190th Street": {
 		"A": "A05",
 	},
-	"Beverly Rd": {
+	"Beverly Road": {
 		"2": "245",
 	},
 	"Greenpoint Avenue": {
@@ -948,7 +948,7 @@ var stopNameToID = map[string]map[string]string{
 	"Middle Village Metropolitan Avenue": {
 		"M": "M01",
 	},
-	"Neck Rd": {
+	"Neck Road": {
 		"Q": "D38",
 	},
 	"8th Street NYU": {
@@ -1068,7 +1068,7 @@ var stopNameToID = map[string]map[string]string{
 		"E":  "A33",
 		"6":  "638",
 	},
-	"Kingsbridge Rd": {
+	"Kingsbridge Road": {
 		"4": "406",
 		"D": "D04",
 	},
@@ -1294,7 +1294,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "606",
 		"6":  "606",
 	},
-	"Middletown Rd": {
+	"Middletown Road": {
 		"6X": "603",
 		"6":  "603",
 	},
@@ -1317,7 +1317,7 @@ var stopNameToID = map[string]map[string]string{
 	"Cleveland Street": {
 		"J": "J22",
 	},
-	"Kingston Throop Avs": {
+	"Kingston Throop Avenues": {
 		"C": "A47",
 	},
 	"Chambers Street": {
@@ -1380,7 +1380,7 @@ var stopNameToID = map[string]map[string]string{
 		"E": "G08",
 		"F": "G08",
 	},
-	"Kings Hwy": {
+	"Kings Highway": {
 		"Q": "D35",
 		"N": "N08",
 		"B": "D35",
@@ -1404,7 +1404,7 @@ var stopNameToID = map[string]map[string]string{
 		"6X": "632",
 		"6":  "632",
 	},
-	"Kew Gardens Union Tpke": {
+	"Kew Gardens Union Turnpike": {
 		"E": "F06",
 		"F": "F06",
 	},

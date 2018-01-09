@@ -187,7 +187,7 @@ func (s *service) getTrainDialog(ctx context.Context, ft gosubway.FeedType, name
 	_, north, south := feed.NextTrainTimes(stopID, line)
 
 	var trains []time.Time
-	if trainDirs[line]["northbound"] == dir {
+	if trainDirs[line]["northbound"] == dir || dir == "uptown" || dir == "Northbound" {
 		trains = north
 	} else {
 		trains = south
