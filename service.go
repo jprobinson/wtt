@@ -46,11 +46,5 @@ func (s service) JSONEndpoints() map[string]map[string]marvin.HTTPEndpoint {
 				Decoder:  decodeNextTrains,
 			},
 		},
-		"/svc/subway-api/v1/dialogflow": {
-			"POST": {
-				Endpoint: s.postDialogflow,
-				Decoder:  decodeDialogflow,
-			},
-		},
 	}
 }

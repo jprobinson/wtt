@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"net/http"
 	"strings"
 	"time"
 
+	"github.com/NYTimes/marvin"
 	"github.com/jprobinson/gosubway"
 	"google.golang.org/appengine/log"
 )
@@ -16,7 +18,7 @@ const (
 )
 
 // retries until it hits max attempts or a context timeout
-func getFeed(ctx context.Context, key string, ft gosubway.FeedType) (*gosubway.FeedMessage, error) {
+func GetFeed(ctx context.Context, key string, ft gosubway.FeedType) (*gosubway.FeedMessage, error) {
 	var (
 		feed *gosubway.FeedMessage
 		err  error
@@ -38,3 +40,29 @@ func getFeed(ctx context.Context, key string, ft gosubway.FeedType) (*gosubway.F
 	}
 	return feed, err
 }
+
+func parseFeed(line string) (gosubway.FeedType, error) {
+	var ft gosubway.FeedType
+	switch line {
+	case "1", "2", "3", "4", "5", "6":
+		ft = gosubway.NumberedFeed
+	case "N", "Q", "R", "W":
+		ft = gosubway.YellowFeed
+	case "B", "D", "F", "M":
+		ft = gosubway.OrangeFeed
+	case "A", "C", "E":
+		ft = gosubway.BlueFeed
+	case "J", "Z":
+		ft = gosubway.BrownFeed
+	case "L":
+		ft = gosubway.LFeed
+	case "G":
+		ft = gosubway.GFeed
+	default:
+		return gosubway.LFeed, errBadRequest
+	}
+	return ft, nil
+}
+
+var errBadRequest = marvin.NewJSONStatusResponse(map[string]string{
+	"error": "bad request"}, http.StatusBadRequest)

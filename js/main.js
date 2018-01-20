@@ -169,8 +169,10 @@ function changeLine(line) {
     $(".main-section .mta-bullet").each(function() {
             var bullet = $(this);
             if (!bullet.hasClass("sbullet")) {
+				console.log(bullet);
                 bullet.removeClass(currClass);
                 bullet.addClass(newClass);
+				console.log(bullet);
                 bullet.html(line);
             }
     });
@@ -223,7 +225,7 @@ function getStops(callback) {
         }
     };
 
-    var savedStops = JSON.parse(localStorage.getItem("stopsv2"));
+    var savedStops = JSON.parse(localStorage.getItem("stopsv3"));
     if (savedStops) {
        stops = savedStops;
        changeLine(currentLine);
@@ -236,7 +238,7 @@ function getStops(callback) {
         stops = data;
         changeLine(currentLine);
         work();
-        localStorage.setItem("stopsv2", JSON.stringify(stops));
+        localStorage.setItem("stopsv3", JSON.stringify(stops));
         callback();
     });
 }
