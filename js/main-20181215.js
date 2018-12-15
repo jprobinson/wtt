@@ -225,7 +225,7 @@ function getStops(callback) {
         }
     };
 
-    var savedStops = JSON.parse(localStorage.getItem("stopsv3"));
+    var savedStops = JSON.parse(localStorage.getItem("stopsv4"));
     if (savedStops) {
        stops = savedStops;
        changeLine(currentLine);
@@ -238,7 +238,7 @@ function getStops(callback) {
         stops = data;
         changeLine(currentLine);
         work();
-        localStorage.setItem("stopsv3", JSON.stringify(stops));
+        localStorage.setItem("stopsv4", JSON.stringify(stops));
         callback();
     });
 }
