@@ -29,8 +29,7 @@ pipeline:
     addl_args:
       "--image-url": "gcr.io/wheresthetrain-nyc/wtt:${DRONE_COMMIT}"
     version: "${DRONE_TAG}"
-    vars:
-      KEY: $${MTA_KEY}
+    vars: '{ "KEY": "$$MTA_KEY" }'
     secrets:
       - source: google_credentials
         target: GAE_CREDENTIALS
