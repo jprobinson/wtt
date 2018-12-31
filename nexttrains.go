@@ -1,4 +1,4 @@
-package main
+package wtt
 
 import (
 	"context"
@@ -6,9 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"google.golang.org/appengine/log"
-
-	"github.com/NYTimes/marvin"
+	"github.com/NYTimes/gizmo/server/kit"
 	"github.com/jprobinson/gosubway"
 )
 
@@ -17,8 +15,8 @@ func (s *service) getNextTrains(ctx context.Context, req interface{}) (interface
 
 	feed, err := GetFeed(ctx, s.key, r.FeedType)
 	if err != nil {
-		log.Debugf(ctx, "error getting feed: %s", err)
-		return nil, marvin.NewJSONStatusResponse(
+		kit.LogErrorMsg(ctx, err, "error getting feeds")
+		return nil, kit.NewJSONStatusResponse(
 			map[string]string{"error": "unable to get feed"},
 			http.StatusInternalServerError)
 	}
@@ -32,7 +30,7 @@ func (s *service) getNextTrains(ctx context.Context, req interface{}) (interface
 }
 
 func decodeNextTrains(ctx context.Context, r *http.Request) (interface{}, error) {
-	vars := marvin.Vars(r)
+	vars := kit.Vars(r)
 	line := strings.ToUpper(vars["line"])
 	ft, err := parseFeed(line)
 	if err != nil {

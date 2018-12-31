@@ -1,4 +1,4 @@
-package main
+package wtt
 
 import (
 	"context"
@@ -6,9 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NYTimes/marvin"
+	"github.com/NYTimes/gizmo/server/kit"
 	"github.com/jprobinson/gosubway"
-	"google.golang.org/appengine/log"
 )
 
 const (
@@ -36,7 +35,7 @@ func GetFeed(ctx context.Context, key string, ft gosubway.FeedType) (*gosubway.F
 			(err != nil && strings.Contains(err.Error(), "deadline exceeded")) {
 			break
 		}
-		log.Errorf(ctx, "unable to get mta feed on attempt %d: %s", attempt, err)
+		kit.LogErrorMsg(ctx, err, "unable to get mta feed")
 	}
 	return feed, err
 }
@@ -66,5 +65,5 @@ func parseFeed(line string) (gosubway.FeedType, error) {
 	return ft, nil
 }
 
-var errBadRequest = marvin.NewJSONStatusResponse(map[string]string{
+var errBadRequest = kit.NewJSONStatusResponse(map[string]string{
 	"error": "bad request"}, http.StatusBadRequest)

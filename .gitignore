@@ -1,2 +1,4 @@
+cmd/server/server
+cmd/server/prd.yaml
 *.swp
 .sec
