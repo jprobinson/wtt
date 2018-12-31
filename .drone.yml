@@ -32,7 +32,7 @@ pipeline:
       "--image-url": "gcr.io/wheresthetrain-nyc/wtt:${DRONE_COMMIT}"
     version: "${DRONE_TAG}"
     vars:
-      - MTA_KEY: $${mta_key}
+      MTA_KEY: $${mta_key}
     secrets:
       - source: google_credentials
         target: gae_credentials
