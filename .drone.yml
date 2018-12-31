@@ -9,12 +9,11 @@ pipeline:
 
   publish-server-image:
     image: plugins/gcr
-    settings:
-      registry: gcr.io
-      repo: wheresthetrain-nyc/wtt
-      tag: "${DRONE_COMMIT}"
-      json_key:
-        from_secret: google_credentials
+    registry: gcr.io
+    repo: wheresthetrain-nyc/wtt
+    tag: "${DRONE_COMMIT}"
+    json_key:
+      from_secret: google_credentials
     when:
       branch: [master]
       event: push
