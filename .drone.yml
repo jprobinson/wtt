@@ -33,8 +33,8 @@ pipeline:
       MTA_KEY:
         from_secret: mta_key
     secrets:
-      gae_credentials:
-        from_secret: google_credentials
+      - target: gae_credentials
+        source: google_credentials
     when:
       branch: [master]
       event: push
