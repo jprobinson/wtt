@@ -18,7 +18,7 @@ pipeline:
       branch: [master]
       event: push
 
-  deploy:
+  deploy-appengine:
     environment:
       GAE_CREDENTIALS:
         from_secret: google_credentials
