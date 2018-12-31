@@ -11,13 +11,12 @@ pipeline:
 
   publish-server-image:
     image: plugins/gcr
-    repo: wheresthetrain-nyc/wtt
-    registry: gcr.io
-    tag: "${DRONE_COMMIT}"
-    storage_driver: overlay2
-    secrets:
-      - source: google_credentials
-        target: google_credentials
+    settings:
+      registry: gcr.io
+      repo: wheresthetrain-nyc/wtt
+      tag: "${DRONE_COMMIT}"
+      json_key:
+        from_secret: google_credentials
     when:
       branch: [master]
       event: push
