@@ -20,7 +20,7 @@ pipeline:
 
   deploy-appengine:
     environment:
-      GAE_CREDENTIALS:
+      - GAE_CREDENTIALS:
         from_secret: google_credentials
     image: nytimes/drone-gae
     action: deploy
