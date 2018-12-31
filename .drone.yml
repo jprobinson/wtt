@@ -26,7 +26,7 @@ pipeline:
     app_file: app.yaml
     addl_flags:
       - "--no-promote"
-    addl_args: '{ "--image-url": "gcr.io/wheresthetrain-nyc/wtt:$DRONE_COMMIT" }'
+    addl_args: '{ "--image-url": "gcr.io/wheresthetrain-nyc/wtt:$$DRONE_COMMIT" }'
     version: "${DRONE_TAG}"
     vars: '{ "KEY": "$$MTA_KEY" }'
     secrets:
