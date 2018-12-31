@@ -21,7 +21,7 @@ pipeline:
   deploy-appengine:
     environment:
       - GAE_CREDENTIALS:
-        from_secret: google_credentials
+          from_secret: google_credentials
     image: nytimes/drone-gae
     action: deploy
     project: wheresthetrain-nyc
