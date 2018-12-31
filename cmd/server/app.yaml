@@ -3,3 +3,6 @@ service: default
 
 inbound_services:
 - warmup
+
+env_variables:
+  MTA_KEY: {{ .MTA_KEY }}
