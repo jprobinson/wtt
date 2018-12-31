@@ -14,12 +14,6 @@ deploy-local: build-image
 	gcloud app deploy ./prd.yaml --version "local-`date +'%s'`"  --image-url gcr.io/wheresthetrain-nyc/wtt:local --project wheresthetrain-nyc --quiet; say -v Samantha "deployed\!";
 	@rm cmd/server/server;
 
-# Ensures Go modules is enabled and updates vendor directory with any missing deps.
-deps:
-	@export GO111MODULE=on; \
-	go get -v .; \
-	go mod vendor; \
-
 # Runs the go vet command, will be a dependency for any test.
 vet:
 	@go vet .
