@@ -19,9 +19,6 @@ pipeline:
       event: push
 
   deploy-appengine:
-    environment:
-      - GAE_CREDENTIALS:
-          from_secret: google_credentials
     image: nytimes/drone-gae
     action: deploy
     project: wheresthetrain-nyc
@@ -35,6 +32,9 @@ pipeline:
     vars:
       MTA_KEY:
         from_secret: mta_key
+    secrets:
+      gae_credentials:
+        from_secret: google_credentials
     when:
       branch: [master]
       event: push
