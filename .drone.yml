@@ -32,9 +32,9 @@ steps:
   version: "${DRONE_COMMIT}"
   vars: '{ "KEY": "$$MTA_KEY" }'
   secrets:
-  - source: google_credentials
-    target: GAE_CREDENTIALS
-  - source: mta_key
+    - source: google_credentials
+      target: GAE_CREDENTIALS
+    - source: mta_key
       target: MTA_KEY
   when:
     branch: [master]
