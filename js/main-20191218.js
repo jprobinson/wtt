@@ -36,7 +36,9 @@ function getTrainTime(callback) {
                     }
                 }
             }
-
+			if (stop == null) {
+				return
+			}
             var hash = '#'+currentLine+'/'+stop+'/'+brooklyn.active
             if(history.pushState) {
                 history.pushState(null, null, hash);
@@ -183,7 +185,7 @@ function changeLine(line) {
 function changeStops(line) {
     var lineInfo = stops[line];
     $('.toggle').toggles({
-        text:{on:lineInfo["northbound"],off:lineInfo["southbound"]},
+        text:{on:lineInfo["Northbound"],off:lineInfo["Southbound"]},
         on: startNorth,
         width:250,
         height:50
@@ -191,10 +193,10 @@ function changeStops(line) {
 
     var select = $("select");
     select.find("option").remove(); 
-    $(lineInfo["stops"]).each(function() {
+    $(lineInfo["Stops"]).each(function() {
         var opt = document.createElement("option");
-        opt.value = this[0];
-        var name = this[1];
+        opt.value = this.ID;
+        var name = this.MTAName;
         var sp = 22 - name.length;
         for(var i = 0; i < sp; i++) {
             name = "&nbsp;" + name;
@@ -225,7 +227,7 @@ function getStops(callback) {
         }
     };
 
-    var savedStops = JSON.parse(localStorage.getItem("stopsv4"));
+    var savedStops = JSON.parse(localStorage.getItem("stopsv5"));
     if (savedStops) {
        stops = savedStops;
        changeLine(currentLine);
@@ -238,16 +240,16 @@ function getStops(callback) {
         stops = data;
         changeLine(currentLine);
         work();
-        localStorage.setItem("stopsv4", JSON.stringify(stops));
+        localStorage.setItem("stopsv5", JSON.stringify(stops));
         callback();
     });
 }
 
 function getStopName(line, stop) {
     var lineInfo = stops[line];
-    for (var i = 0; i < lineInfo.stops.length; i++) {
-        if (lineInfo.stops[i][0] == stop) {
-            return lineInfo.stops[i][1].replace(/\&nbsp;/g,''); 
+    for (var i = 0; i < lineInfo.Stops.length; i++) {
+        if (lineInfo.Stops[i].ID == stop) {
+            return lineInfo.Stops[i].MTAName.replace(/\&nbsp;/g,''); 
         }
     }
     return "STOP NOT FOUND"; 
@@ -258,9 +260,9 @@ function getDirectionName(line, dir) {
 
     var name = "";
     if (dir == "south") {
-        name = lineInfo.southbound;
+        name = lineInfo.Southbound;
     } else {
-        name = lineInfo.northbound;
+        name = lineInfo.Northbound;
     }
     if (name == "BrooklynBrooklyn Brdgnbsp;Brdg") {
         name = "Brooklyn Brdg";

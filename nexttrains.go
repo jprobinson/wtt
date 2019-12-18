@@ -7,13 +7,15 @@ import (
 	"time"
 
 	"github.com/NYTimes/gizmo/server/kit"
-	"github.com/jprobinson/gosubway"
+
+	"github.com/jprobinson/gtfs/mta"
+	"github.com/jprobinson/gtfs/transit_realtime"
 )
 
 func (s *service) getNextTrains(ctx context.Context, req interface{}) (interface{}, error) {
 	r := req.(*nextTrainsRequest)
 
-	feed, err := GetFeed(ctx, s.key, r.FeedType)
+	feed, err := GetFeed(ctx, s.hc, s.key, r.FeedType)
 	if err != nil {
 		kit.LogErrorMsg(ctx, err, "error getting feeds")
 		return nil, kit.NewJSONStatusResponse(
@@ -21,7 +23,7 @@ func (s *service) getNextTrains(ctx context.Context, req interface{}) (interface
 			http.StatusInternalServerError)
 	}
 
-	alerts, north, south := feed.NextTrainTimes(r.Stop, r.Line)
+	alerts, north, south := mta.FeedNextTrainTimes(feed, r.Stop, r.Line)
 	return &nextTrainResponse{
 		Northbound: north,
 		Southbound: south,
@@ -46,11 +48,11 @@ func decodeNextTrains(ctx context.Context, r *http.Request) (interface{}, error)
 type nextTrainsRequest struct {
 	Stop     string
 	Line     string
-	FeedType gosubway.FeedType
+	FeedType mta.FeedType
 }
 
 type nextTrainResponse struct {
-	Northbound []time.Time       `json:"northbound"`
-	Southbound []time.Time       `json:"southbound"`
-	Alerts     []*gosubway.Alert `json:"alerts"`
+	Northbound []time.Time               `json:"northbound"`
+	Southbound []time.Time               `json:"southbound"`
+	Alerts     []*transit_realtime.Alert `json:"alerts"`
 }
