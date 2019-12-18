@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"time"
 
 	"github.com/NYTimes/gizmo/server/kit"
 	"github.com/go-kit/kit/endpoint"
@@ -15,10 +16,16 @@ import (
 type service struct {
 	key  string
 	base string
+
+	hc *http.Client
 }
 
 func NewService() kit.Service {
-	return &service{key: os.Getenv("MTA_KEY"), base: os.Getenv("BASE_PATH")}
+	return &service{
+		key:  os.Getenv("MTA_KEY"),
+		base: os.Getenv("BASE_PATH"),
+		hc:   &http.Client{Timeout: 2 * time.Second},
+	}
 }
 
 func (s service) HTTPOptions() []httptransport.ServerOption {
