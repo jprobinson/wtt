@@ -5,7 +5,6 @@ pipeline:
       - make build
     when:
       event: push
-      branch: [master]
 
   publish-server-image:
     image: plugins/gcr
