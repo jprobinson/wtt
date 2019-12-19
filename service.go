@@ -110,10 +110,10 @@ func (s service) HTTPEndpoints() map[string]map[string]kit.HTTPEndpoint {
 				Encoder:  serveFile(s.base+"/pages/terms.html", htmlct),
 			},
 		},
-		"/privacy.txt": {
+		"/privacy.html": {
 			"GET": {
 				Endpoint: static,
-				Encoder:  serveFile(s.base+"/pages/terms.txt", plainct),
+				Encoder:  serveFile(s.base+"/pages/privacy.html", htmlct),
 			},
 		},
 	}

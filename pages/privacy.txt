@@ -1,3 +1,8 @@
-Your information will only be used so this website (wheresthetrain.nyc) or the "NYC Train Time" Google Action can have unique identifier to save your stop information against so it knows when you request it.
+<h3>NYC Train Time Privacy Policy</h3>
 
-Your information will NEVER be sold to anyone or used for anything outside of this application.
+<p>
+This application will allow users to optionally save their favorite subway stop location. Only that information will be retained and it is saved against an anonymous user ID in a secure datastore on Google Cloud Platform.
+</p>
+<p>
+This application will never sell your information nor make it public on the internet.
+</p>
