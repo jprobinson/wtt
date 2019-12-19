@@ -104,7 +104,13 @@ func (s service) HTTPEndpoints() map[string]map[string]kit.HTTPEndpoint {
 				Encoder:  serveFile(s.base+"/pages/humans.txt", plainct),
 			},
 		},
-		"/terms.txt": {
+		"/terms.html": {
+			"GET": {
+				Endpoint: static,
+				Encoder:  serveFile(s.base+"/pages/terms.html", htmlct),
+			},
+		},
+		"/privacy.txt": {
 			"GET": {
 				Endpoint: static,
 				Encoder:  serveFile(s.base+"/pages/terms.txt", plainct),

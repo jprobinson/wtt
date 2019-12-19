@@ -1,0 +1,3 @@
+Your information will only be used so this website (wheresthetrain.nyc) or the "NYC Train Time" Google Action can have unique identifier to save your stop information against so it knows when you request it.
+
+Your information will NEVER be sold to anyone or used for anything outside of this application.
