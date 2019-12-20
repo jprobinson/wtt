@@ -170,13 +170,15 @@ function changeLine(line) {
     var newClass = "mta-"+line.toLowerCase();
     $(".main-section .mta-bullet").each(function() {
             var bullet = $(this);
-            if (!bullet.hasClass("sbullet")) {
-				console.log(bullet);
-                bullet.removeClass(currClass);
-                bullet.addClass(newClass);
-				console.log(bullet);
-                bullet.html(line);
+            if (bullet.hasClass("sbullet")) {
+                return
             }
+	        if (bullet.hasClass("transfer-icon")) {
+                return
+            }
+            bullet.removeClass(currClass);
+            bullet.addClass(newClass);
+            bullet.html(line);
     });
     currentLine = line;
     changeStops(line);
@@ -220,14 +222,13 @@ function getStops(callback) {
     currentLine = locData[2];
     var work = function() {
         if (savedLoc) {
-            console.log("SAVED");
-            console.log(locData);
             setLocName(locData[0]);
             $('#stop').val(locData[0]);
+            updateTransfers();
         }
     };
 
-    var savedStops = JSON.parse(localStorage.getItem("stopsv5"));
+    var savedStops = JSON.parse(localStorage.getItem("stopsv6"));
     if (savedStops) {
        stops = savedStops;
        changeLine(currentLine);
@@ -240,7 +241,7 @@ function getStops(callback) {
         stops = data;
         changeLine(currentLine);
         work();
-        localStorage.setItem("stopsv5", JSON.stringify(stops));
+        localStorage.setItem("stopsv6", JSON.stringify(stops));
         callback();
     });
 }
@@ -307,6 +308,62 @@ function addFavoriteLink(fav, index) {
     $("#fav-list").append(list);
 }
 
+function setStop(stop, line, dir) {
+    startNorth = dir == "north";
+    changeLine(line);
+    $('#stop').val(stop);
+    updateTransfers();
+}
+
+function updateTransfers() {
+	var lineInfo = stops[currentLine];
+	var stop = $('#stop').val();
+	var transfers;
+    $(lineInfo["Stops"]).each(function() {
+		if (this.ID == stop) {
+			transfers = this.Transfers	
+		}
+    });
+
+	// clear old transfers
+	$('#transfers').html('');
+	if (!transfers) {
+		return
+	}
+	$('#transfers').append('<h3>transfer available to the</h3>');
+	var listBase = document.createElement("ul");
+	for (var i = 0; i < transfers.length; i++) {
+		var xfer = transfers[i];
+		if (xfer.Route.endsWith('X')) {
+			continue;
+		}
+		var list = document.createElement("li");
+		list.className = "transfer-item";
+		list.setAttribute("data-info", xfer.StopID+'|'+xfer.Route+'|north');
+
+		var base = document.createElement("a");
+		base.href = "#";
+		list.appendChild(base);
+
+		// <span class='mta-bullet mta-l fav-train'>L</span>
+		var train = document.createElement("span");
+		train.className = "mta-bullet mta-"+xfer.Route.toLowerCase()+" transfer-icon";
+		train.innerHTML = xfer.Route;
+		base.appendChild(train);
+
+		listBase.appendChild(list);
+	}
+	$('#transfers').append(listBase);
+	$('.transfer-item').click(function(event) {
+		event.preventDefault();
+		var info = $(this).data("info").split("|");
+        changeLine(info[1]);
+		updateTransfers();
+        setStop(info[0], info[1], info[2]);
+        getTrainTime(updateClock);
+	});
+}
+
 
 function createFavLinks() {
     $(".fav-item").remove();
@@ -317,17 +374,14 @@ function createFavLinks() {
     $('.fav-delete').click(function(event) {
         event.preventDefault();
         var index = $(this).data('fav-index');
-
         clearLocation(index);
         createFavLinks();
     });
     $('.fav-item').click(function(event) {
         event.preventDefault();
         var info = $(this).data("info").split("|");
-        startNorth = info[1] == "north";
-        changeLine(info[2]);
-        $('#stop').val(info[0]);
-        getTrainTime(updateClock);
+		setStop(info[0], info[2], info[1]);
+		getTrainTime(updateClock);
     });
 }
 
@@ -341,6 +395,7 @@ $(function() {
             event.preventDefault();
             var newLine = $(this).find(".mta-bullet").html();
             changeLine(newLine);
+            updateTransfers();
             getTrainTime(updateClock);
         });
 
@@ -350,9 +405,11 @@ $(function() {
         if (window.location.hash) {
             var info = window.location.hash.split('/');
             if (info.length > 2) {
-                startNorth = info[2] == "true";
-                changeLine(info[0].substr(1));
-                $('#stop').val(info[1]);
+                var dir = "south";
+                if (info[2] == "true") {
+                    dir = "north"
+                }
+                setStop(info[1], info[0].substr(1), dir);
                 getTrainTime(updateClock);
             }
         }
@@ -362,6 +419,7 @@ $(function() {
         });
         var stop = $('#stop');
         stop.change(function(event){
+            updateTransfers();
             getTrainTime(updateClock);
         });
         $('#save').click(function(event) {
