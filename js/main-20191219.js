@@ -357,6 +357,10 @@ function updateTransfers() {
 	$('.transfer-item').click(function(event) {
 		event.preventDefault();
 		var info = $(this).data("info").split("|");
+		info[2] = "south";
+		if (startNorth) {
+			info[2] = "north";
+		}
         changeLine(info[1]);
 		updateTransfers();
         setStop(info[0], info[1], info[2]);
