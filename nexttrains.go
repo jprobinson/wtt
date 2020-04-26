@@ -34,6 +34,7 @@ func (s *service) getNextTrains(ctx context.Context, req interface{}) (interface
 func decodeNextTrains(ctx context.Context, r *http.Request) (interface{}, error) {
 	vars := kit.Vars(r)
 	line := strings.ToUpper(vars["line"])
+
 	ft, err := parseFeed(line)
 	if err != nil {
 		return nil, err

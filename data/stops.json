@@ -2,7 +2,7 @@
   "1": {
     "Name": "1",
     "Northbound": "Bronx",
-    "Southbound": "South\u0026nbsp;Ferry",
+    "Southbound": "South Ferry",
     "Stops": [
       {
         "ID": "101",
@@ -163,11 +163,13 @@
       },
       {
         "ID": "118",
-        "MTAName": "Cathedral Pkwy",
-        "DisplayName": "Cathedral Parkway",
-        "PhoneticName": "Cathedral Parkway",
+        "MTAName": "Cathedral Pkwy (110 St)",
+        "DisplayName": "Cathedral Parkway, 110th Street",
+        "PhoneticName": "Cathedral Parkway, 110th Street",
         "Synonyms": [
-          "Cathedral Parkway"
+          "Cathedral Parkway",
+          "110th Street",
+          "110th Street, Cathedral Parkway"
         ]
       },
       {
@@ -546,11 +548,11 @@
       },
       {
         "ID": "138",
-        "MTAName": "WTC Cortlandt",
-        "DisplayName": "WTC Cortlandt",
-        "PhoneticName": "WTC Cortlandt",
+        "MTAName": "Cortlandt St",
+        "DisplayName": "Cortlandt Street",
+        "PhoneticName": "Cortlandt Street",
         "Synonyms": [
-          "WTC Cortlandt"
+          "Cortlandt Street"
         ]
       },
       {
@@ -629,10 +631,10 @@
       {
         "ID": "208",
         "MTAName": "Gun Hill Rd",
-        "DisplayName": "Gun Hill Rd",
-        "PhoneticName": "Gun Hill Rd",
+        "DisplayName": "Gun Hill Road",
+        "PhoneticName": "Gun Hill Road",
         "Synonyms": [
-          "Gun Hill Rd"
+          "Gun Hill Road"
         ]
       },
       {
@@ -1667,10 +1669,10 @@
       {
         "ID": "245",
         "MTAName": "Beverly Rd",
-        "DisplayName": "Beverly Rd",
-        "PhoneticName": "Beverly Rd",
+        "DisplayName": "Beverly Road",
+        "PhoneticName": "Beverly Road",
         "Synonyms": [
-          "Beverly Rd"
+          "Beverly Road"
         ],
         "Transfers": [
           {
@@ -2360,12 +2362,12 @@
       {
         "ID": "251",
         "MTAName": "Sutter Av - Rutland Rd",
-        "DisplayName": "Sutter Avenue, Rutland Rd",
-        "PhoneticName": "Sutter Avenue, Rutland Rd",
+        "DisplayName": "Sutter Avenue, Rutland Road",
+        "PhoneticName": "Sutter Avenue, Rutland Road",
         "Synonyms": [
           "Sutter Avenue",
-          "Rutland Rd",
-          "Rutland Rd, Sutter Avenue"
+          "Rutland Road",
+          "Rutland Road, Sutter Avenue"
         ],
         "Transfers": [
           {
@@ -2536,19 +2538,19 @@
       {
         "ID": "406",
         "MTAName": "Kingsbridge Rd",
-        "DisplayName": "Kingsbridge Rd",
-        "PhoneticName": "Kingsbridge Rd",
+        "DisplayName": "Kingsbridge Road",
+        "PhoneticName": "Kingsbridge Road",
         "Synonyms": [
-          "Kingsbridge Rd"
+          "Kingsbridge Road"
         ]
       },
       {
         "ID": "407",
         "MTAName": "Fordham Rd",
-        "DisplayName": "Fordham Rd",
-        "PhoneticName": "Fordham Rd",
+        "DisplayName": "Fordham Road",
+        "PhoneticName": "Fordham Road",
         "Synonyms": [
-          "Fordham Rd"
+          "Fordham Road"
         ]
       },
       {
@@ -3560,12 +3562,12 @@
       {
         "ID": "251",
         "MTAName": "Sutter Av - Rutland Rd",
-        "DisplayName": "Sutter Avenue, Rutland Rd",
-        "PhoneticName": "Sutter Avenue, Rutland Rd",
+        "DisplayName": "Sutter Avenue, Rutland Road",
+        "PhoneticName": "Sutter Avenue, Rutland Road",
         "Synonyms": [
           "Sutter Avenue",
-          "Rutland Rd",
-          "Rutland Rd, Sutter Avenue"
+          "Rutland Road",
+          "Rutland Road, Sutter Avenue"
         ],
         "Transfers": [
           {
@@ -3739,10 +3741,10 @@
       {
         "ID": "503",
         "MTAName": "Gun Hill Rd",
-        "DisplayName": "Gun Hill Rd",
-        "PhoneticName": "Gun Hill Rd",
+        "DisplayName": "Gun Hill Road",
+        "PhoneticName": "Gun Hill Road",
         "Synonyms": [
-          "Gun Hill Rd"
+          "Gun Hill Road"
         ],
         "Transfers": [
           {
@@ -4487,12 +4489,12 @@
       {
         "ID": "251",
         "MTAName": "Sutter Av - Rutland Rd",
-        "DisplayName": "Sutter Avenue, Rutland Rd",
-        "PhoneticName": "Sutter Avenue, Rutland Rd",
+        "DisplayName": "Sutter Avenue, Rutland Road",
+        "PhoneticName": "Sutter Avenue, Rutland Road",
         "Synonyms": [
           "Sutter Avenue",
-          "Rutland Rd",
-          "Rutland Rd, Sutter Avenue"
+          "Rutland Road",
+          "Rutland Road, Sutter Avenue"
         ],
         "Transfers": [
           {
@@ -4666,10 +4668,10 @@
       {
         "ID": "503",
         "MTAName": "Gun Hill Rd",
-        "DisplayName": "Gun Hill Rd",
-        "PhoneticName": "Gun Hill Rd",
+        "DisplayName": "Gun Hill Road",
+        "PhoneticName": "Gun Hill Road",
         "Synonyms": [
-          "Gun Hill Rd"
+          "Gun Hill Road"
         ],
         "Transfers": [
           {
@@ -5306,10 +5308,10 @@
       {
         "ID": "245",
         "MTAName": "Beverly Rd",
-        "DisplayName": "Beverly Rd",
-        "PhoneticName": "Beverly Rd",
+        "DisplayName": "Beverly Road",
+        "PhoneticName": "Beverly Road",
         "Synonyms": [
-          "Beverly Rd"
+          "Beverly Road"
         ],
         "Transfers": [
           {
@@ -5390,10 +5392,10 @@
       {
         "ID": "603",
         "MTAName": "Middletown Rd",
-        "DisplayName": "Middletown Rd",
-        "PhoneticName": "Middletown Rd",
+        "DisplayName": "Middletown Road",
+        "PhoneticName": "Middletown Road",
         "Synonyms": [
-          "Middletown Rd"
+          "Middletown Road"
         ],
         "Transfers": [
           {
@@ -6182,10 +6184,10 @@
       {
         "ID": "603",
         "MTAName": "Middletown Rd",
-        "DisplayName": "Middletown Rd",
-        "PhoneticName": "Middletown Rd",
+        "DisplayName": "Middletown Road",
+        "PhoneticName": "Middletown Road",
         "Synonyms": [
-          "Middletown Rd"
+          "Middletown Road"
         ],
         "Transfers": [
           {
@@ -7030,29 +7032,35 @@
       },
       {
         "ID": "714",
-        "MTAName": "46 St",
-        "DisplayName": "46th Street",
-        "PhoneticName": "46th Street",
+        "MTAName": "46 St - Bliss St",
+        "DisplayName": "46th Street, Bliss Street",
+        "PhoneticName": "46th Street, Bliss Street",
         "Synonyms": [
-          "46th Street"
+          "46th Street",
+          "Bliss Street",
+          "Bliss Street, 46th Street"
         ]
       },
       {
         "ID": "715",
-        "MTAName": "40 St",
-        "DisplayName": "40th Street",
-        "PhoneticName": "40th Street",
+        "MTAName": "40 St - Lowery St",
+        "DisplayName": "40th Street, Lowery Street",
+        "PhoneticName": "40th Street, Lowery Street",
         "Synonyms": [
-          "40th Street"
+          "40th Street",
+          "Lowery Street",
+          "Lowery Street, 40th Street"
         ]
       },
       {
         "ID": "716",
-        "MTAName": "33 St",
-        "DisplayName": "33rd Street",
-        "PhoneticName": "33rd Street",
+        "MTAName": "33 St - Rawson St",
+        "DisplayName": "33rd Street, Rawson Street",
+        "PhoneticName": "33rd Street, Rawson Street",
         "Synonyms": [
-          "33rd Street"
+          "33rd Street",
+          "Rawson Street",
+          "Rawson Street, 33rd Street"
         ]
       },
       {
@@ -7235,13 +7243,13 @@
       },
       {
         "ID": "726",
-        "MTAName": "34 St - 11 Av",
-        "DisplayName": "34th Street, 11st Avenue",
-        "PhoneticName": "34th Street, 11st Avenue",
+        "MTAName": "34 St - Hudson Yds",
+        "DisplayName": "34th Street, Hudson Yds",
+        "PhoneticName": "34th Street, Hudson Yds",
         "Synonyms": [
           "34th Street",
-          "11st Avenue",
-          "11st Avenue, 34th Street"
+          "Hudson Yds",
+          "Hudson Yds, 34th Street"
         ]
       }
     ]
@@ -7722,11 +7730,13 @@
       },
       {
         "ID": "A32",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -8074,10 +8084,10 @@
       {
         "ID": "A51",
         "MTAName": "Broadway Jct",
-        "DisplayName": "Broadway Jct",
-        "PhoneticName": "Broadway Jct",
+        "DisplayName": "Broadway Junction",
+        "PhoneticName": "Broadway Junction",
         "Synonyms": [
-          "Broadway Jct"
+          "Broadway Junction"
         ],
         "Transfers": [
           {
@@ -8318,10 +8328,10 @@
       {
         "ID": "D04",
         "MTAName": "Kingsbridge Rd",
-        "DisplayName": "Kingsbridge Rd",
-        "PhoneticName": "Kingsbridge Rd",
+        "DisplayName": "Kingsbridge Road",
+        "PhoneticName": "Kingsbridge Road",
         "Synonyms": [
-          "Kingsbridge Rd"
+          "Kingsbridge Road"
         ],
         "Transfers": [
           {
@@ -8333,10 +8343,10 @@
       {
         "ID": "D05",
         "MTAName": "Fordham Rd",
-        "DisplayName": "Fordham Rd",
-        "PhoneticName": "Fordham Rd",
+        "DisplayName": "Fordham Road",
+        "PhoneticName": "Fordham Road",
         "Synonyms": [
-          "Fordham Rd"
+          "Fordham Road"
         ],
         "Transfers": [
           {
@@ -8807,11 +8817,13 @@
       },
       {
         "ID": "D20",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -9509,11 +9521,13 @@
       },
       {
         "ID": "A32",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -9861,10 +9875,10 @@
       {
         "ID": "A51",
         "MTAName": "Broadway Jct",
-        "DisplayName": "Broadway Jct",
-        "PhoneticName": "Broadway Jct",
+        "DisplayName": "Broadway Junction",
+        "PhoneticName": "Broadway Junction",
         "Synonyms": [
-          "Broadway Jct"
+          "Broadway Junction"
         ],
         "Transfers": [
           {
@@ -9982,10 +9996,10 @@
       {
         "ID": "D04",
         "MTAName": "Kingsbridge Rd",
-        "DisplayName": "Kingsbridge Rd",
-        "PhoneticName": "Kingsbridge Rd",
+        "DisplayName": "Kingsbridge Road",
+        "PhoneticName": "Kingsbridge Road",
         "Synonyms": [
-          "Kingsbridge Rd"
+          "Kingsbridge Road"
         ],
         "Transfers": [
           {
@@ -9997,10 +10011,10 @@
       {
         "ID": "D05",
         "MTAName": "Fordham Rd",
-        "DisplayName": "Fordham Rd",
-        "PhoneticName": "Fordham Rd",
+        "DisplayName": "Fordham Road",
+        "PhoneticName": "Fordham Road",
         "Synonyms": [
-          "Fordham Rd"
+          "Fordham Road"
         ],
         "Transfers": [
           {
@@ -10315,11 +10329,13 @@
       },
       {
         "ID": "D20",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -10507,11 +10523,13 @@
       },
       {
         "ID": "R33",
-        "MTAName": "9 St",
-        "DisplayName": "9th Street",
-        "PhoneticName": "9th Street",
+        "MTAName": "4 Av - 9 St",
+        "DisplayName": "4th Avenue, 9th Street",
+        "PhoneticName": "4th Avenue, 9th Street",
         "Synonyms": [
-          "9th Street"
+          "4th Avenue",
+          "9th Street",
+          "9th Street, 4th Avenue"
         ],
         "Transfers": [
           {
@@ -10814,14 +10832,11 @@
       },
       {
         "ID": "F05",
-        "MTAName": "Briarwood - Van Wyck Blvd",
-        "DisplayName": "Briarwood - Van Wyck Boulevard",
-        "PhoneticName": "Briarwood, Van Wyck Boulevard",
+        "MTAName": "Briarwood",
+        "DisplayName": "Briarwood",
+        "PhoneticName": "Briarwood",
         "Synonyms": [
-          "Briarwood",
-          "Van Wyck Boulevard",
-          "Van Wyck Boulevard, Briarwood",
-          "Briarwood, Van Wyck Boulevard"
+          "Briarwood"
         ],
         "Transfers": [
           {
@@ -11358,11 +11373,13 @@
       },
       {
         "ID": "A32",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -11516,14 +11533,11 @@
       },
       {
         "ID": "F05",
-        "MTAName": "Briarwood - Van Wyck Blvd",
-        "DisplayName": "Briarwood - Van Wyck Boulevard",
-        "PhoneticName": "Briarwood, Van Wyck Boulevard",
+        "MTAName": "Briarwood",
+        "DisplayName": "Briarwood",
+        "PhoneticName": "Briarwood",
         "Synonyms": [
-          "Briarwood",
-          "Van Wyck Boulevard",
-          "Van Wyck Boulevard, Briarwood",
-          "Briarwood, Van Wyck Boulevard"
+          "Briarwood"
         ],
         "Transfers": [
           {
@@ -11842,11 +11856,13 @@
       },
       {
         "ID": "D20",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -11921,11 +11937,13 @@
       },
       {
         "ID": "F15",
-        "MTAName": "Delancey St",
-        "DisplayName": "Delancey Street",
-        "PhoneticName": "Delancey Street",
+        "MTAName": "Delancey St - Essex St",
+        "DisplayName": "Delancey Street, Essex Street",
+        "PhoneticName": "Delancey Street, Essex Street",
         "Synonyms": [
-          "Delancey Street"
+          "Delancey Street",
+          "Essex Street",
+          "Essex Street, Delancey Street"
         ],
         "Transfers": [
           {
@@ -12043,11 +12061,13 @@
       },
       {
         "ID": "F23",
-        "MTAName": "4 Av",
-        "DisplayName": "4th Avenue",
-        "PhoneticName": "4th Avenue",
+        "MTAName": "4 Av - 9 St",
+        "DisplayName": "4th Avenue, 9th Street",
+        "PhoneticName": "4th Avenue, 9th Street",
         "Synonyms": [
-          "4th Avenue"
+          "4th Avenue",
+          "9th Street",
+          "9th Street, 4th Avenue"
         ],
         "Transfers": [
           {
@@ -12276,11 +12296,14 @@
     "Stops": [
       {
         "ID": "G22",
-        "MTAName": "Court Sq",
-        "DisplayName": "Court Square",
-        "PhoneticName": "Court Square",
+        "MTAName": "Court Sq - 23 St",
+        "DisplayName": "Court Square - 23rd Street",
+        "PhoneticName": "Court Square, 23rd Street",
         "Synonyms": [
-          "Court Square"
+          "Court Square",
+          "23rd Street",
+          "23rd Street, Court Square",
+          "Court Square, 23rd Street"
         ],
         "Transfers": [
           {
@@ -12483,11 +12506,13 @@
       },
       {
         "ID": "F23",
-        "MTAName": "4 Av",
-        "DisplayName": "4th Avenue",
-        "PhoneticName": "4th Avenue",
+        "MTAName": "4 Av - 9 St",
+        "DisplayName": "4th Avenue, 9th Street",
+        "PhoneticName": "4th Avenue, 9th Street",
         "Synonyms": [
-          "4th Avenue"
+          "4th Avenue",
+          "9th Street",
+          "9th Street, 4th Avenue"
         ],
         "Transfers": [
           {
@@ -12692,11 +12717,13 @@
       },
       {
         "ID": "J17",
-        "MTAName": "75 St",
-        "DisplayName": "75th Street",
-        "PhoneticName": "75th Street",
+        "MTAName": "75 St - Elder Ln",
+        "DisplayName": "75th Street, Elder Ln",
+        "PhoneticName": "75th Street, Elder Ln",
         "Synonyms": [
-          "75th Street"
+          "75th Street",
+          "Elder Ln",
+          "Elder Ln, 75th Street"
         ],
         "Transfers": [
           {
@@ -12786,10 +12813,10 @@
       {
         "ID": "J27",
         "MTAName": "Broadway Jct",
-        "DisplayName": "Broadway Jct",
-        "PhoneticName": "Broadway Jct",
+        "DisplayName": "Broadway Junction",
+        "PhoneticName": "Broadway Junction",
         "Synonyms": [
-          "Broadway Jct"
+          "Broadway Junction"
         ],
         "Transfers": [
           {
@@ -12943,11 +12970,13 @@
       },
       {
         "ID": "M18",
-        "MTAName": "Essex St",
-        "DisplayName": "Essex Street",
-        "PhoneticName": "Essex Street",
+        "MTAName": "Delancy St - Essex St",
+        "DisplayName": "Delancy Street, Essex Street",
+        "PhoneticName": "Delancy Street, Essex Street",
         "Synonyms": [
-          "Essex Street"
+          "Delancy Street",
+          "Essex Street",
+          "Essex Street, Delancy Street"
         ],
         "Transfers": [
           {
@@ -13372,10 +13401,10 @@
       {
         "ID": "L22",
         "MTAName": "Broadway Jct",
-        "DisplayName": "Broadway Jct",
-        "PhoneticName": "Broadway Jct",
+        "DisplayName": "Broadway Junction",
+        "PhoneticName": "Broadway Junction",
         "Synonyms": [
-          "Broadway Jct"
+          "Broadway Junction"
         ],
         "Transfers": [
           {
@@ -13956,11 +13985,13 @@
       },
       {
         "ID": "D20",
-        "MTAName": "W 4 St",
-        "DisplayName": "West 4th Street",
-        "PhoneticName": "West 4th Street",
+        "MTAName": "W 4 St - Wash Sq",
+        "DisplayName": "West 4th Street, Wash Square",
+        "PhoneticName": "West 4th Street, Wash Square",
         "Synonyms": [
-          "West 4th Street"
+          "West 4th Street",
+          "Wash Square",
+          "Wash Square, West 4th Street"
         ],
         "Transfers": [
           {
@@ -14026,11 +14057,13 @@
       },
       {
         "ID": "M18",
-        "MTAName": "Essex St",
-        "DisplayName": "Essex Street",
-        "PhoneticName": "Essex Street",
+        "MTAName": "Delancy St - Essex St",
+        "DisplayName": "Delancy Street, Essex Street",
+        "PhoneticName": "Delancy Street, Essex Street",
         "Synonyms": [
-          "Essex Street"
+          "Delancy Street",
+          "Essex Street",
+          "Essex Street, Delancy Street"
         ],
         "Transfers": [
           {
@@ -14187,10 +14220,10 @@
       {
         "ID": "M04",
         "MTAName": "Fresh Pond Rd",
-        "DisplayName": "Fresh Pond Rd",
-        "PhoneticName": "Fresh Pond Rd",
+        "DisplayName": "Fresh Pond Road",
+        "PhoneticName": "Fresh Pond Road",
         "Synonyms": [
-          "Fresh Pond Rd"
+          "Fresh Pond Road"
         ]
       },
       {
@@ -14292,11 +14325,13 @@
       },
       {
         "ID": "R08",
-        "MTAName": "39 Av",
-        "DisplayName": "39th Avenue",
-        "PhoneticName": "39th Avenue",
+        "MTAName": "39 Av - Dutch Kills",
+        "DisplayName": "39th Avenue, Dutch Kills",
+        "PhoneticName": "39th Avenue, Dutch Kills",
         "Synonyms": [
-          "39th Avenue"
+          "39th Avenue",
+          "Dutch Kills",
+          "Dutch Kills, 39th Avenue"
         ],
         "Transfers": [
           {
@@ -14802,11 +14837,13 @@
       },
       {
         "ID": "R27",
-        "MTAName": "Whitehall St",
-        "DisplayName": "Whitehall Street",
-        "PhoneticName": "Whitehall Street",
+        "MTAName": "Whitehall St - South Ferry",
+        "DisplayName": "Whitehall Street, South Ferry",
+        "PhoneticName": "Whitehall Street, South Ferry",
         "Synonyms": [
-          "Whitehall Street"
+          "Whitehall Street",
+          "South Ferry",
+          "South Ferry, Whitehall Street"
         ],
         "Transfers": [
           {
@@ -15000,11 +15037,13 @@
       },
       {
         "ID": "R33",
-        "MTAName": "9 St",
-        "DisplayName": "9th Street",
-        "PhoneticName": "9th Street",
+        "MTAName": "4 Av - 9 St",
+        "DisplayName": "4th Avenue, 9th Street",
+        "PhoneticName": "4th Avenue, 9th Street",
         "Synonyms": [
-          "9th Street"
+          "4th Avenue",
+          "9th Street",
+          "9th Street, 4th Avenue"
         ],
         "Transfers": [
           {
@@ -15873,19 +15912,19 @@
       {
         "ID": "D29",
         "MTAName": "Beverley Rd",
-        "DisplayName": "Beverley Rd",
-        "PhoneticName": "Beverley Rd",
+        "DisplayName": "Beverley Road",
+        "PhoneticName": "Beverley Road",
         "Synonyms": [
-          "Beverley Rd"
+          "Beverley Road"
         ]
       },
       {
         "ID": "D30",
         "MTAName": "Cortelyou Rd",
-        "DisplayName": "Cortelyou Rd",
-        "PhoneticName": "Cortelyou Rd",
+        "DisplayName": "Cortelyou Road",
+        "PhoneticName": "Cortelyou Road",
         "Synonyms": [
-          "Cortelyou Rd"
+          "Cortelyou Road"
         ]
       },
       {
@@ -15957,10 +15996,10 @@
       {
         "ID": "D38",
         "MTAName": "Neck Rd",
-        "DisplayName": "Neck Rd",
-        "PhoneticName": "Neck Rd",
+        "DisplayName": "Neck Road",
+        "PhoneticName": "Neck Road",
         "Synonyms": [
-          "Neck Rd"
+          "Neck Road"
         ]
       },
       {
@@ -16800,11 +16839,13 @@
       },
       {
         "ID": "R27",
-        "MTAName": "Whitehall St",
-        "DisplayName": "Whitehall Street",
-        "PhoneticName": "Whitehall Street",
+        "MTAName": "Whitehall St - South Ferry",
+        "DisplayName": "Whitehall Street, South Ferry",
+        "PhoneticName": "Whitehall Street, South Ferry",
         "Synonyms": [
-          "Whitehall Street"
+          "Whitehall Street",
+          "South Ferry",
+          "South Ferry, Whitehall Street"
         ],
         "Transfers": [
           {
@@ -16998,11 +17039,13 @@
       },
       {
         "ID": "R33",
-        "MTAName": "9 St",
-        "DisplayName": "9th Street",
-        "PhoneticName": "9th Street",
+        "MTAName": "4 Av - 9 St",
+        "DisplayName": "4th Avenue, 9th Street",
+        "PhoneticName": "4th Avenue, 9th Street",
         "Synonyms": [
-          "9th Street"
+          "4th Avenue",
+          "9th Street",
+          "9th Street, 4th Avenue"
         ],
         "Transfers": [
           {
@@ -17279,11 +17322,13 @@
       },
       {
         "ID": "R08",
-        "MTAName": "39 Av",
-        "DisplayName": "39th Avenue",
-        "PhoneticName": "39th Avenue",
+        "MTAName": "39 Av - Dutch Kills",
+        "DisplayName": "39th Avenue, Dutch Kills",
+        "PhoneticName": "39th Avenue, Dutch Kills",
         "Synonyms": [
-          "39th Avenue"
+          "39th Avenue",
+          "Dutch Kills",
+          "Dutch Kills, 39th Avenue"
         ],
         "Transfers": [
           {
@@ -17789,11 +17834,13 @@
       },
       {
         "ID": "R27",
-        "MTAName": "Whitehall St",
-        "DisplayName": "Whitehall Street",
-        "PhoneticName": "Whitehall Street",
+        "MTAName": "Whitehall St - South Ferry",
+        "DisplayName": "Whitehall Street, South Ferry",
+        "PhoneticName": "Whitehall Street, South Ferry",
         "Synonyms": [
-          "Whitehall Street"
+          "Whitehall Street",
+          "South Ferry",
+          "South Ferry, Whitehall Street"
         ],
         "Transfers": [
           {
@@ -17987,11 +18034,13 @@
       },
       {
         "ID": "R33",
-        "MTAName": "9 St",
-        "DisplayName": "9th Street",
-        "PhoneticName": "9th Street",
+        "MTAName": "4 Av - 9 St",
+        "DisplayName": "4th Avenue, 9th Street",
+        "PhoneticName": "4th Avenue, 9th Street",
         "Synonyms": [
-          "9th Street"
+          "4th Avenue",
+          "9th Street",
+          "9th Street, 4th Avenue"
         ],
         "Transfers": [
           {
@@ -18379,11 +18428,13 @@
       },
       {
         "ID": "J17",
-        "MTAName": "75 St",
-        "DisplayName": "75th Street",
-        "PhoneticName": "75th Street",
+        "MTAName": "75 St - Elder Ln",
+        "DisplayName": "75th Street, Elder Ln",
+        "PhoneticName": "75th Street, Elder Ln",
         "Synonyms": [
-          "75th Street"
+          "75th Street",
+          "Elder Ln",
+          "Elder Ln, 75th Street"
         ],
         "Transfers": [
           {
@@ -18455,10 +18506,10 @@
       {
         "ID": "J27",
         "MTAName": "Broadway Jct",
-        "DisplayName": "Broadway Jct",
-        "PhoneticName": "Broadway Jct",
+        "DisplayName": "Broadway Junction",
+        "PhoneticName": "Broadway Junction",
         "Synonyms": [
-          "Broadway Jct"
+          "Broadway Junction"
         ],
         "Transfers": [
           {
@@ -18549,11 +18600,13 @@
       },
       {
         "ID": "M18",
-        "MTAName": "Essex St",
-        "DisplayName": "Essex Street",
-        "PhoneticName": "Essex Street",
+        "MTAName": "Delancy St - Essex St",
+        "DisplayName": "Delancy Street, Essex Street",
+        "PhoneticName": "Delancy Street, Essex Street",
         "Synonyms": [
-          "Essex Street"
+          "Delancy Street",
+          "Essex Street",
+          "Essex Street, Delancy Street"
         ],
         "Transfers": [
           {
